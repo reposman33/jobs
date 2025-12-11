@@ -1,0 +1,54 @@
+  <div class="flex flex-col justify-between h-screen p-8 ">
+    <div>
+      <table mat-table [dataSource]="dataSource" matSort #sort="matSort">
+        
+          <!-- Datum Column -->
+        <ng-container matColumnDef="datum">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> DATUM </th>
+          <td mat-cell *matCellDef="let element"> {{element.datum}} </td>
+        </ng-container>
+      
+        <!-- Bedrijf Column -->
+        <ng-container matColumnDef="bedrijf">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> BEDRIJF </th>
+          <td mat-cell *matCellDef="let element"> {{element.bedrijf}} </td>
+        </ng-container>
+      
+        <!-- Functie Column -->
+        <ng-container matColumnDef="functie">
+          <th mat-header-cell *matHeaderCellDef> FUNCTIE </th>
+          <td mat-cell *matCellDef="let element"> {{element.functie}} </td>
+        </ng-container>
+      
+        <!-- Sluitingsdatum Column -->
+        <ng-container matColumnDef="sluitingsdatum">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SLUITINGSDATUM </th>
+          <td mat-cell *matCellDef="let element"> {{element.sluitingsdatum}} </td>
+        </ng-container>
+      
+        <!-- Sollicitatie Column -->
+        <ng-container matColumnDef="sollicitatie">
+          <th mat-header-cell *matHeaderCellDef> SOLLICITATIE </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="sollicitatie-textarea" [title]="element.sollicitatie">
+              {{getLimitedSentences(element.sollicitatie)}}
+            </div>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="['datum', 'bedrijf', 'functie', 'sluitingsdatum', 'sollicitatie']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['datum', 'bedrijf', 'functie', 'sluitingsdatum', 'sollicitatie'];"></tr>
+      </table>
+      <mat-paginator #paginator
+          [length]="dataSource.data.length"
+          [pageIndex]="0"
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 20]"
+          aria-label="Select page">
+      </mat-paginator>
+    </div>
+
+    <button mat-fab class="fab-button flex flex-col self-end" (click)="addNewSollicitatie()" title="Nieuwe sollicitatie toevoegen">
+      <mat-icon class="flex flex-col self-end">add</mat-icon>
+    </button>
+  </div>

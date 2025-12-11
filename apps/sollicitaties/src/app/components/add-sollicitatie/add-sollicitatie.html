@@ -1,0 +1,62 @@
+<div class="add-sollicitatie-container">
+  <h2>Add Sollicitatie</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <mat-form-field class="form-field">
+        <mat-label>Datum</mat-label>
+        <input matInput [matDatepicker]="datumPicker" formControlName="datum" />
+        <mat-datepicker-toggle matSuffix [for]="datumPicker"></mat-datepicker-toggle>
+        <mat-datepicker #datumPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Bedrijf</mat-label>
+        <input matInput formControlName="bedrijf" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field class="form-field">
+        <mat-label>Functie</mat-label>
+        <input matInput formControlName="functie" />
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Sluitingsdatum</mat-label>
+        <input matInput [matDatepicker]="sluitingsdatumPicker" formControlName="sluitingsdatum" />
+        <mat-datepicker-toggle matSuffix [for]="sluitingsdatumPicker"></mat-datepicker-toggle>
+        <mat-datepicker #sluitingsdatumPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field class="form-field full-width">
+        <mat-label>Sollicitatie</mat-label>
+        <textarea matInput formControlName="sollicitatie" rows="5"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <label class="radio-label">Status</label>
+      <mat-radio-group formControlName="status" class="radio-group">
+        <mat-radio-button value="pending">Pending</mat-radio-button>
+        <mat-radio-button value="accepted">Accepted</mat-radio-button>
+        <mat-radio-button value="rejected">Rejected</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
+        Add Sollicitatie
+      </button>
+      <button mat-raised-button type="button" (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
+  </form>
+
+    <button mat-fab class="fab-button flex flex-col self-start" (click)="activateRoute('sollicitaties')" title="Toon sollicitaties">
+      <mat-icon class="flex justify-start">arrow_back_ios</mat-icon>
+    </button>
+</div>
