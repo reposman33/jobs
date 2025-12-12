@@ -3,72 +3,72 @@
 table[mat-table] {
   border-collapse: separate;
   border-spacing: 0 8px;
-}
-[mat-header-cell] {
-  border: none;
-}
 
-[mat-header-cell]:last-of-type {
-  text-align: center;
-}
+  [mat-header-cell] {
+    border: none;
 
-[mat-row] {
-  border-radius: vars.$border-radius-cell-row-end;
-  border: 1px solid #ccc;
-  background-color: vars.$row-bg-color;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  cursor: pointer;
-
-  &:hover {
-    background-color: vars.$cell-bg-color;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    &:last-of-type {
+      text-align: center;
+    }
   }
 
-
-  & [mat-cell]:first-of-type {
-    border:none;
-    border-left: 1px solid #ccc;
+  [mat-row] {
     border-radius: vars.$border-radius-cell-row-end;
-    padding: 16px;
-  }
-  & [mat-cell]:last-of-type {
-    border:none;
-    border-right: 1px solid #ccc;
-    border-radius: vars.$border-radius-cell-row-end;
-    padding: 16px;
-  }
-
-  & [mat-cell] {
-    // padding: 16px;
+    border: 1px solid #ccc;
+    background-color: vars.$row-bg-color;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
 
     &:hover {
-      background-color: vars.$cell-hover-bg-color;
-      border-radius: vars.$border-radius-cell;
-    }
-    &[mat-cell]:first-of-type:hover {
-      background-color: vars.$cell-hover-bg-color;
-      border-top-left-radius: vars.$border-radius-cell-row-end;
-      border-bottom-left-radius: vars.$border-radius-cell-row-end;
+      background-color: vars.$cell-bg-color;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    &[mat-cell]:last-of-type:hover {
-      background-color: vars.$cell-hover-bg-color;
-      border-top-right-radius: vars.$border-radius-cell-row-end;
-      border-bottom-right-radius: vars.$border-radius-cell-row-end;
+    & [mat-cell] {
+      border: none;
+
+      &:hover {
+        background-color: vars.$cell-hover-bg-color;
+        border-radius: vars.$border-radius-cell;
+      }
+
+      &:first-of-type {
+        border-left: 1px solid #ccc;
+        border-radius: vars.$border-radius-cell-row-end;
+        padding: 16px;
+
+        &:hover {
+          background-color: vars.$cell-hover-bg-color;
+          border-top-left-radius: vars.$border-radius-cell-row-end;
+          border-bottom-left-radius: vars.$border-radius-cell-row-end;
+        }
+      }
+      
+      &:last-of-type {
+        border-right: 1px solid #ccc;
+        border-radius: vars.$border-radius-cell-row-end;
+        padding: 16px;
+
+        &:hover {
+          background-color: vars.$cell-hover-bg-color;
+          border-top-right-radius: vars.$border-radius-cell-row-end;
+          border-bottom-right-radius: vars.$border-radius-cell-row-end;
+        }
+      }
     }
 
-  }
-  .sollicitatie-textarea {
-    display: block;
-    width: 100%;
-    min-height: 30px;
-    max-height: 60px;
-    overflow-y: auto;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    line-height: 1.5;
-    font-size: 0.875rem;
+    .sollicitatie-textarea {
+      display: block;
+      width: 100%;
+      min-height: 30px;
+      max-height: 60px;
+      overflow-y: auto;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      line-height: 1.5;
+      font-size: 0.875rem;
+    }
   }
 }
 
