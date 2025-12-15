@@ -28,6 +28,10 @@ table[mat-table] {
     & [mat-cell] {
       border: none;
 
+      &:nth-child(even) {
+        background-color: vars.$cell-bg-color;
+      }
+
       &:hover {
         background-color: vars.$cell-hover-bg-color;
         border-radius: vars.$border-radius-cell;
@@ -35,7 +39,8 @@ table[mat-table] {
 
       &:first-of-type {
         border-left: 1px solid #ccc;
-        border-radius: vars.$border-radius-cell-row-end;
+        border-top-left-radius: vars.$border-radius-cell-row-end;
+        border-bottom-left-radius: vars.$border-radius-cell-row-end;
         padding: 16px;
 
         &:hover {
@@ -47,7 +52,8 @@ table[mat-table] {
       
       &:last-of-type {
         border-right: 1px solid #ccc;
-        border-radius: vars.$border-radius-cell-row-end;
+        border-top-right-radius: vars.$border-radius-cell-row-end;
+        border-bottom-right-radius: vars.$border-radius-cell-row-end;
         padding: 16px;
 
         &:hover {
@@ -69,6 +75,6 @@ table[mat-table] {
       line-height: 1.5;
       font-size: 0.875rem;
     }
+
   }
 }
-

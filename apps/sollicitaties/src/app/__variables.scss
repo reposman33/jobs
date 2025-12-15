@@ -1,5 +1,6 @@
-$container-bg-color: #f3f4f6;
-$row-bg-color: #ffffff;
+$bg-color: var(--mat-sys-primary-container);
+$container-bg-color: var(--mat-sys-secondary-container);
+$row-bg-color: var(--mat-sys-secondary-container);
 $cell-bg-color: #ffffff;
 $cell-hover-bg-color: #ccc;
 $border-color: #d1d5db;
