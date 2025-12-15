@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge, EMPTY } from 'rxjs';
-import { Sollicitatie } from '@models';
+import { Sollicitatie } from '../../../../../../models/sollicitatie.interface';
 
 
 // TODO: replace this with real data from your application

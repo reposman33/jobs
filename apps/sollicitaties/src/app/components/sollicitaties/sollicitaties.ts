@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Sollicitatie } from '@models';
+import { Sollicitatie } from '../../../../../../models/sollicitatie.interface';
 import { SollicitatiesDataSource } from './sollicitaties-datasource';
 
 @Component({
