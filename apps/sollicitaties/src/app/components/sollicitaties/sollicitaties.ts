@@ -56,7 +56,11 @@ export class Sollicitaties {
   getLimitedSentences(text: string): string {
     if (!text) return '';
     const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
-    return sentences.slice(0, 3).join('').trim();
+    return this.getEllipsedString(sentences.slice(0, 2).join('').trim(), text, '...');
+  }
+
+  getEllipsedString(truncatedString: string, orgString: string, suffix: string): string {
+    return orgString.length > truncatedString.length ? truncatedString + suffix : orgString;
   }
 
   addNewSollicitatie(): void {
