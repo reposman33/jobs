@@ -1,8 +1,8 @@
 export interface Sollicitatie {
-  datum: string;
+  datum: Date;
   bedrijf: string;
   functie: string;
-  sluitingsdatum: string;
+  sluitingsdatum: Date;
   sollicitatie: string;
   status: 'accepted' | 'rejected' | 'pending';
 }
