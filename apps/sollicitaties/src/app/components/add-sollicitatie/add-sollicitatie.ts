@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { StorageService } from '../../services/StorageService';
 
 @Component({
   selector: 'app-add-sollicitatie',
@@ -34,6 +35,7 @@ export class AddSollicitatieComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
+  private storageService = inject(StorageService);
 
   ngOnInit(): void {
     this.initializeForm();
@@ -54,6 +56,7 @@ export class AddSollicitatieComponent implements OnInit {
     if (this.form.valid) {
       console.log('Form Value:', this.form.value);
       // TODO: Implement submission logic (e.g., add to datasource)
+      this.storageService.addSollicitatie(this.form.value)
       this.form.reset({ status: 'pending' });
     }
   }
