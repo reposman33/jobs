@@ -1,4 +1,4 @@
-  <div class="flex flex-col justify-between h-screen p-8 ">
+  <div class="flex flex-col gap-8 h-6 p-8 ">
     <div>
       <table mat-table [dataSource]="dataSource" matSort #sort="matSort">
         
@@ -40,7 +40,7 @@
         <tr mat-row *matRowDef="let row; columns: ['datum', 'bedrijf', 'functie', 'sluitingsdatum', 'sollicitatie'];"></tr>
       </table>
       <mat-paginator #paginator
-          [length]="dataSource.data.length"
+          [length]="10"
           [pageIndex]="0"
           [pageSize]="10"
           [pageSizeOptions]="[5, 10, 20]"
@@ -49,6 +49,6 @@
     </div>
 
     <button mat-fab class="fab-button flex flex-col self-end" (click)="addNewSollicitatie()" title="Nieuwe sollicitatie toevoegen">
-      <mat-icon class="flex flex-col self-end">add</mat-icon>
+      <mat-icon class="flex flex-col">add</mat-icon>
     </button>
   </div>
