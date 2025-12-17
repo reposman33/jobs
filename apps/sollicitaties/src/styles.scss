@@ -18,23 +18,5 @@ body {
   h2 {
     @apply text-2xl font-bold text-gray-800 m-0 p-0;
   }
-  
-  & .fab-button {
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 100;
-    width: vars.$icon-size-fab;
-    height: vars.$icon-size-fab;
-
-    mat-icon {
-      font-size: vars.$icon-size-fab;
-      width: vars.$icon-size-fab;
-      height: vars.$icon-size-fab;
-      line-height: vars.$icon-size-fab;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
 }
 
