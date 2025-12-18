@@ -28,6 +28,7 @@ table[mat-table] {
     & [mat-cell] {
       border: none;
       color: white;
+      padding: 0 1rem;
 
       &:hover {
         cursor: pointer;
@@ -67,7 +68,6 @@ table[mat-table] {
         border-left: 1px solid #ccc;
         border-top-left-radius: vars.$border-radius-cell-row-end;
         border-bottom-left-radius: vars.$border-radius-cell-row-end;
-        padding: 12px;
 
         &:hover {
           background-color: vars.$cell-odd-hover-bg-color;
@@ -80,7 +80,7 @@ table[mat-table] {
         border-right: 1px solid #ccc;
         border-top-right-radius: vars.$border-radius-cell-row-end;
         border-bottom-right-radius: vars.$border-radius-cell-row-end;
-        padding: 16px;
+
         &:hover {
           background-color: vars.$cell-even-hover-bg-color;
           border-top-right-radius: vars.$border-radius-cell-row-end;
