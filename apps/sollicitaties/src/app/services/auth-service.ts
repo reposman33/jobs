@@ -38,7 +38,7 @@ public get userId(): string | null {
   }
 
   async registerWithEmail(email: string, password: string) {
-    // Implement email/password registration logic here
+  return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
   async sendPasswordResetEmail(email: string) {

@@ -1,0 +1,12 @@
+<div class="flex flex-col justify-center items-center h-2/6">   
+   
+   <form [formGroup]="form" (ngSubmit)="registerWithEmail()" class="flex flex-col gap-6 w-80 bg-blue-400 p-6 mb-8 rounded-lg shadow-md">
+      <input class="rounded-md p-1" type="email" formControlName="email" placeholder="Email" />
+      <input class="rounded-md p-1" type="password" formControlName="password" placeholder="Password" />
+      
+      <div class="flex justify-end">
+         <button class="min-w-2.5 self-end min-p-5" mat-raised-button type="submit">
+            Registreer
+         </button>
+      </div>
+   </form>
