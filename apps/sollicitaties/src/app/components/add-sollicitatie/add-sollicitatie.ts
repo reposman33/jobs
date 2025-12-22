@@ -44,12 +44,13 @@ export class AddSollicitatieComponent implements OnInit {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private storageService = inject(StorageService);
+  private authService = inject(AuthService)
 
   ngOnInit(): void {
     this.initializeForm();
-    this.id = this.activatedRoute.snapshot.paramMap.get('id')
-    if(this.id) {
-      this.updateForm(this.id);
+    const id = this.activatedRoute.snapshot.paramMap.get('id')
+    if(id) {
+      this.updateForm(id);
     }
   }
   
@@ -67,7 +68,7 @@ export class AddSollicitatieComponent implements OnInit {
   }
 
   async updateForm(id: string) {
-    this.storageService.getSollicitatie(id)
+    this.storageService.getSollicitatieById(id)
     .subscribe(sollicitaties => this.initializeForm(sollicitaties));
   }
 

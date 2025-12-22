@@ -66,7 +66,7 @@ export class Sollicitaties {
     return truncatedText < text ? truncatedText + '...' : text;
   }
 
-  toonSollicitatie(id: string) {    
+  toonSollicitatie(id: string) {
     this.activateRoute('/add-sollicitatie', id)
   }
 
