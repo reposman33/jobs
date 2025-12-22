@@ -1,0 +1,20 @@
+<div class="flex flex-col justify-center items-center h-2/6">   
+   
+   <form [formGroup]="form" (ngSubmit)="loginWithEmailAndPassword()" class="flex flex-col gap-6 w-80 bg-blue-400 p-6 mb-8 rounded-lg shadow-md">
+      <input class="rounded-md p-1" type="email" formControlName="email" placeholder="Email" />
+      <input class="rounded-md p-1" type="password" formControlName="password" placeholder="Password" />
+      
+      <div class="flex justify-between">
+         <button class="min-w-2.5 self-end !bg-sky-300" mat-raised-button type="button" (click)="router.navigateByUrl('/registreer')">
+            Register
+         </button>
+         <button class="min-w-2.5 self-end" mat-raised-button color="primary" type="submit">
+            Login
+         </button>
+      </div>
+   </form>
+
+   <button class="min-h-12" mat-raised-button color="primary" (click)="loginWithGoogle()">
+     Login met Google
+   </button>
+</div>
