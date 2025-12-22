@@ -15,7 +15,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Sollicitatie } from '../../../../models/sollicitatie.interface';
 import { StorageService } from '../../services/StorageService';
-import { Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -42,10 +41,10 @@ export class Sollicitaties {
   protected dataSource = new MatTableDataSource<Sollicitatie>();
   private router = inject(Router);
   private storageService = inject(StorageService);
-  protected sollicitaties$!: Observable<Sollicitatie[]>
-  
+  protected sollicitaties$!: Promise<Sollicitatie[]>;
+   
   ngOnInit(){
-    this.sollicitaties$ = this.storageService.getSollicitaties()
+    this.sollicitaties$ = this.storageService.getAllSollicitaties();
   }
 
   ngAfterViewInit(): void {
@@ -56,7 +55,7 @@ export class Sollicitaties {
       this.dataSource.sort = this.sort;
     }
 
-    this.sollicitaties$.subscribe(data => this.dataSource.data = data)
+    this.sollicitaties$.then(data => this.dataSource.data = data)
   }
 
   getLimitedSentences(text: string): string {

@@ -7,35 +7,51 @@ import {
   deleteDoc,
   updateDoc,
   getDoc,
-  setDoc,
-  CollectionReference,
-  DocumentData
+  DocumentData,
+  addDoc,
+  query, 
+  where,
+  DocumentReference,
+  QuerySnapshot,
+  getDocs
 } from '@angular/fire/firestore';
 import { Sollicitatie } from '../../../models/sollicitatie.interface';
 // Import the functions you need from the SDKs you need
 import { from, Observable } from 'rxjs';
+import { AuthService } from './auth-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StorageService {
-  readonly sollicitaties$: Observable<(DocumentData | (DocumentData & { id: string; }))[]>;
-  private sollicitatiesRef!: CollectionReference;
+   protected querySnapshot!: QuerySnapshot<DocumentData>;
+   constructor(private firestore: Firestore, private authService: AuthService) {}
+   
+   // geef een Promise die resolved naar een Sollicitatie []
+   //  getDocumentsOnce: wordt niet opnieuw aangeroepen als upstream een document dat aan query voldoet wijzigt
+   async getDocumentsOnce (): Promise<Sollicitatie[]> {
+     const ref = collection(this.firestore, 'sollicitaties');
+     const q = query(ref, where("userId","==", this.authService.userId));
+     const docs = await getDocs(q);
 
-  constructor(private firestore: Firestore) {
-    const ref = collection(this.firestore, 'sollicitaties');
-    this.sollicitaties$ = collectionData(ref, { idField: 'id' });
+     const sollicitaties: Sollicitatie[] = [];
+
+     docs.forEach((doc) => {
+      const sollicitatie: Sollicitatie = doc.data() as Sollicitatie;
+       sollicitaties.push({...sollicitatie, id: doc.id});
+     });
+     return sollicitaties;
   }
 
-  // // Voeg een nieuwe sollicitatie toe
-  addSollicitatie(sollicitatie: Sollicitatie): Promise<void> {
-    const sollicitatieRef = doc(this.firestore, `sollicitaties/${sollicitatie.datum}`); // We gebruiken de datum als ID (je kunt dit ook vervangen door een UUID of andere unieke identifier)
-    return setDoc(sollicitatieRef, sollicitatie);
+  // Voeg een nieuwe sollicitatie toe
+  addSollicitatie(sollicitatie: Sollicitatie): Promise<DocumentReference<DocumentData, DocumentData>> {
+    const sollicitatieRef = collection(this.firestore, 'sollicitaties');
+    return addDoc(sollicitatieRef, sollicitatie);
   }
 
   // Haal alle sollicitaties op
-  getSollicitaties() {
-    return this.sollicitaties$ as Observable<Sollicitatie[]>;
+  getAllSollicitaties(): Promise<Sollicitatie[]> {
+    return this.getDocumentsOnce();
   }
 
   // Update een sollicitatie

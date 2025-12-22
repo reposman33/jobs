@@ -1,4 +1,5 @@
 export interface Sollicitatie {
+   id: string
   datum: string;
   bedrijf: string;
   functie: string;

@@ -47,7 +47,10 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="['datum', 'bedrijf', 'functie', 'sluitingsdatum', 'sollicitatie', 'status']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['datum', 'bedrijf', 'functie', 'sluitingsdatum', 'sollicitatie', 'status'];" (click)="toonSollicitatie(row.id)"></tr>
+        <tr
+         mat-row
+         *matRowDef="let row;columns: ['datum', 'bedrijf', 'functie', 'sluitingsdatum', 'sollicitatie', 'status'];"
+         (click)="toonSollicitatie(row.id)"></tr>
       </table>
       <mat-paginator #paginator
           [length]="10"
