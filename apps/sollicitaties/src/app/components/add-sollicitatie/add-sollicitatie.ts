@@ -40,7 +40,6 @@ export class AddSollicitatieComponent implements OnInit {
   private cdr = inject(ChangeDetectorRef);
   private datePipe = new DatePipe('nl-NL');
   protected form!: FormGroup;
-  private id: string | null = null;
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
@@ -55,14 +54,15 @@ export class AddSollicitatieComponent implements OnInit {
     }
   }
   
-  initializeForm(sollicitatie: Sollicitatie | null = null): void {
-    this.form = this.fb.group({
-      datum: [sollicitatie ? this.convertFirestoreTimestamp(sollicitatie.datum) : '', Validators.required],
-      bedrijf: [sollicitatie?.bedrijf || '', Validators.required],
-      functie: [sollicitatie?.functie || '', Validators.required],
-      sluitingsdatum: [sollicitatie ? this.convertFirestoreTimestamp(sollicitatie.sluitingsdatum) : '', Validators.required],
-      sollicitatie: [sollicitatie?.sollicitatie || '', Validators.required],
-      status: [sollicitatie?.status || 'pending', Validators.required],
+  initializeForm(sollicitatie: Sollicitatie | null = null, id: string = ''): void {
+   this.form = this.fb.group({
+      datum: [{value: sollicitatie ? this.convertFirestoreTimestamp(sollicitatie.datum) : '', disabled: id.length > 0}, [Validators.required]],
+      functie: [{value: sollicitatie?.functie || '', disabled: id.length > 0}, [Validators.required]],
+      bedrijf: [{value: sollicitatie?.bedrijf || '', disabled: id.length > 0}, [Validators.required]],
+      sluitingsdatum: [{value: sollicitatie ? this.convertFirestoreTimestamp(sollicitatie.sluitingsdatum) : '', disabled: id.length > 0}, [Validators.required]],
+      sollicitatie: [{value: sollicitatie?.sollicitatie || '', disabled: id.length > 0}, [Validators.required]],
+      status: [ sollicitatie?.status ?? 'pending', [Validators.required], ],
+      id: [id || ''],
     });
  
     this.cdr.markForCheck();

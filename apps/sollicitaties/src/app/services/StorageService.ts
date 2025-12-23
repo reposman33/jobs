@@ -32,7 +32,6 @@ export class StorageService {
      const ref = collection(this.firestore, 'sollicitaties');
      const q = query(ref, where("userId","==", this.authService.userId));
      const docs = await getDocs(q);
-
      const sollicitaties: Sollicitatie[] = [];
 
      docs.forEach((doc) => {
