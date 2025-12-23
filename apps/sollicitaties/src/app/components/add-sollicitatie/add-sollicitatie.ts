@@ -64,18 +64,24 @@ export class AddSollicitatieComponent implements OnInit {
       status: [ sollicitatie?.status ?? 'pending', [Validators.required], ],
       id: [id || ''],
     });
- 
+    
     this.cdr.markForCheck();
   }
 
   async updateForm(id: string) {
     this.storageService.getSollicitatieById(id)
-    .subscribe(sollicitaties => this.initializeForm(sollicitaties));
+    .subscribe(sollicitaties => this.initializeForm(sollicitaties, id));
   }
 
   onSubmit(): void {
     if (this.form.valid) {
-      // sla de userId op bij de sollicitatie
+      if(this.form.value.id) {
+        // update bestaande sollicitatie
+        this.storageService.updateSollicitatie(this.form.value.id, this.form.value)
+        this.activateRoute('sollicitaties')
+        return;
+      }
+      // toevoegen nieuwe sollicitatie
       this.form.value.userId = this.authService.userId;
       this.storageService.addSollicitatie(this.form.value)
       this.activateRoute('sollicitaties')
