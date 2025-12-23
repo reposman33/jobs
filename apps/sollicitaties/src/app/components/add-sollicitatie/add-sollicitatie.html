@@ -5,7 +5,7 @@
     <div class="form-row">
       <mat-form-field class="form-field">
         <mat-label>Datum</mat-label>
-        <input matInput [matDatepicker]="datumPicker" formControlName="datum" />
+        <input matInput [matDatepicker]="datumPicker" formControlName="datum"/>
         <mat-datepicker-toggle matSuffix [for]="datumPicker"></mat-datepicker-toggle>
         <mat-datepicker #datumPicker></mat-datepicker>
       </mat-form-field>
@@ -24,7 +24,7 @@
 
       <mat-form-field class="form-field">
         <mat-label>Sluitingsdatum</mat-label>
-        <input matInput [matDatepicker]="sluitingsdatumPicker" formControlName="sluitingsdatum" />
+        <input matInput [matDatepicker]="sluitingsdatumPicker" formControlName="sluitingsdatum"/>
         <mat-datepicker-toggle matSuffix [for]="sluitingsdatumPicker"></mat-datepicker-toggle>
         <mat-datepicker #sluitingsdatumPicker></mat-datepicker>
       </mat-form-field>
@@ -47,12 +47,12 @@
     </div>
 
     <div class="form-actions">
-      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
-        Add Sollicitatie
-      </button>
-      <button mat-raised-button type="button" (click)="onCancel()">
-        Cancel
-      </button>
+       <button mat-raised-button type="button" (click)="onCancel()" [disabled]="form.value.id !== ''">
+          Cancel
+         </button>
+         <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
+           OK
+         </button>
     </div>
   </form>
 
