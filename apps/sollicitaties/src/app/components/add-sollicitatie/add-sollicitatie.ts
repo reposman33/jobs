@@ -103,6 +103,9 @@ export class AddSollicitatieComponent implements OnInit {
   }
 
   convertFirestoreTimestamp(timestamp: string | undefined): string {
+    if (!timestamp) {
+      return '';
+    }
     // Cast naar Timestamp
     const firestoreTimestamp = timestamp as unknown as Timestamp;
     const date = firestoreTimestamp.toDate();  // Je kunt nu veilig de toDate() methode aanroepen
