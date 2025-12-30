@@ -13,29 +13,13 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> BEDRIJF </th>
           <td mat-cell *matCellDef="let element"> {{element.bedrijf}} </td>
         </ng-container>
-      
-        <!-- Functie Column -->
-        <ng-container matColumnDef="functie">
-          <th mat-header-cell *matHeaderCellDef> FUNCTIE </th>
-          <td mat-cell *matCellDef="let element"> {{element.functie}} </td>
-        </ng-container>
-      
+            
         <!-- Sluitingsdatum Column -->
         <ng-container matColumnDef="sluitingsdatum">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> SLUITINGSDATUM </th>
-          <td mat-cell *matCellDef="let element"> {{element.sluitingsdatum.toDate() | date:'fullDate'}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.sluitingsdatum && element.sluitingsdatum.toDate() | date:'fullDate'}} </td>
         </ng-container>
       
-        <!-- Sollicitatie Column -->
-        <ng-container matColumnDef="sollicitatie">
-          <th mat-header-cell *matHeaderCellDef> SOLLICITATIE </th>
-          <td mat-cell *matCellDef="let element">
-            <div class="sollicitatie-textarea" [title]="element.sollicitatie">
-              {{element.sollicitatie}}
-            </div>
-          </td>
-        </ng-container>
-
         <!-- status Column -->
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> STATUS </th>
@@ -46,10 +30,10 @@
             [class.rejected]="element.status === 'rejected'">{{element.status }}</span> </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="['datum', 'bedrijf', 'functie', 'sluitingsdatum', 'sollicitatie', 'status']"></tr>
+        <tr mat-header-row *matHeaderRowDef="['datum', 'bedrijf', 'sluitingsdatum', 'status']"></tr>
         <tr
          mat-row
-         *matRowDef="let row;columns: ['datum', 'bedrijf', 'functie', 'sluitingsdatum', 'sollicitatie', 'status'];"
+         *matRowDef="let row;columns: ['datum', 'bedrijf', 'sluitingsdatum', 'status'];"
          (click)="toonSollicitatie(row.id)"></tr>
       </table>
       <mat-paginator #paginator
