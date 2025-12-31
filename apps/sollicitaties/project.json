@@ -17,7 +17,6 @@
         "polyfills": [
           "zone.js"
         ],
-        "cache": false,
         "tsConfig": "apps/sollicitaties/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
