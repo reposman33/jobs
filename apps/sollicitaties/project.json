@@ -23,9 +23,8 @@
           {
             "glob": "**/*",
             "input": "apps/sollicitaties/public"
-          },
-          "apps/sollicitaties/src/_redirects"
-        ],
+          }
+       ],
         "styles": [
           "node_modules/@angular/material/prebuilt-themes/azure-blue.css",
           "apps/sollicitaties/src/styles.scss"
