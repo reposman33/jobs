@@ -22,14 +22,6 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir, { recursive: true });
 }
 
-// DEBUG LOGS (veilig)
-console.log('--- Omgevingsvariabelen Check ---');
-const key = process.env.API_KEY || "";
-console.log('API_KEY gevonden:', key.length > 0);
-console.log('API_KEY begint met:', key.substring(0, 4)); // Moet 'AIza' zijn
-console.log('API_KEY eindigt op:', key.substring(key.length - 2));
-console.log('--- Einde Check ---');
-
 try {
     fs.writeFileSync(targetPath, envConfigFile);
     console.log(`✅ Bestand succesvol aangemaakt op: ${targetPath}`);
