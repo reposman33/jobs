@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../services/auth-service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [ AsyncPipe, MatButtonModule ],
+  imports: [ AsyncPipe, MatButtonModule, DatePipe ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
   encapsulation: ViewEncapsulation.Emulated,
@@ -15,6 +15,7 @@ import { AsyncPipe } from '@angular/common';
 export class Header {
 
   protected authService = inject(AuthService);
+  protected lastLogin$ = this.authService.lastLogin$;
 
   signOut() {
     this.authService.signOut();

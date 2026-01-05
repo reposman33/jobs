@@ -5,10 +5,27 @@
 }
 
 .header {
-  @apply relative flex items-center justify-center w-4/5 h-16 p-4 mb-8 rounded-lg;
+  @apply flex items-center justify-between w-4/5 h-16 p-4 mb-8 rounded-lg;
   background-color: vars.$container-bg-color;
 
-  & button {
-    @apply absolute right-4 bg-white
+  .header-section {
+    @apply flex items-center;
+
+    &.left {
+      @apply justify-start;
+    }
+
+    &.center {
+      @apply flex-1 justify-center;
+    }
+
+    &.right {
+      @apply justify-end pr-3 ml-4;
+
+      & span {
+        @apply mr-4 text-sm text-gray-600 !important;
+      }
+
+    }
   }
 }

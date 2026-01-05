@@ -18,6 +18,11 @@ export class AuthService {
   private auth = inject(Auth);
   private router = inject(Router);
   
+  public lastLogin$ = authState(this.auth).pipe(
+    map(user => user ? user.metadata.lastSignInTime : null)
+  );
+  
+
 public get userId(): string | null {
     const user = this.auth.currentUser;
     return user ? user.uid : null;

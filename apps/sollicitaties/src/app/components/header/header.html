@@ -1,8 +1,15 @@
 <div class="header">
-  <h1>Sollicitaties</h1>
+  <div class="header-section left"></div>
+
+  <div class="header-section center">
+    <h1>Sollicitaties</h1>
+  </div>
 
   @if(authService.isAuthenticated$ | async) {
-    <button mat-button (click)="signOut()">Log uit</button>
+    <div class="header-section right">
+      <span>Laatste login: {{ (lastLogin$ | async) | date:'EEEE, MMMM d y' }}</span>
+      <button mat-flat-button (click)="signOut()">Log uit</button>
+    </div>
   }
 </div>
 
