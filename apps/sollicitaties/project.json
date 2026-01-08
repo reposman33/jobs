@@ -23,6 +23,11 @@
           {
             "glob": "**/*",
             "input": "apps/sollicitaties/public"
+          },
+          {
+            "glob": "jobsearch.ico",
+            "input": "apps/sollicitaties/src",
+            "output": "."
           }
        ],
         "styles": [
