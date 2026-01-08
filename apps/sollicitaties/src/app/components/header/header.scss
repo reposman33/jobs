@@ -11,6 +11,15 @@
   .header-section {
     @apply flex items-center;
 
+    & .title-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      /* Zorg dat de titel niet over je logo heen valt op kleine schermen */
+      white-space: nowrap;
+    }
+
     &.left {
     }
 
