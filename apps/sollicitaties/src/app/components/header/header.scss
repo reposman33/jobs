@@ -9,7 +9,7 @@
   background-color: vars.$container-bg-color;
 
   .header-section {
-    @apply flex items-center;
+    @apply flex items-center w-[26vw];
 
     & .title-center {
       position: absolute;
@@ -34,7 +34,7 @@
     &.right {
 
       & span {
-        @apply mr-4 text-sm text-gray-600;    
+        @apply mr-4 text-sm text-gray-600; 
       }      
     }
   }
