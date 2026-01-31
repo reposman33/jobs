@@ -28,7 +28,7 @@ test.describe('Add Sollicitatie E2E Tests', () => {
     
     // Stap 2: Navigeer naar 'Add Sollicitatie' pagina
     await page.click('a:has-text("Add"), button:has-text("Add")')
-    await page.waitForURL(`${baseUrl}/add`);
+    await page.waitForURL(`${baseUrl}/add-sollicitatie`);
     
     // Stap 3: Vul het formulier in
     const today = new Date();
