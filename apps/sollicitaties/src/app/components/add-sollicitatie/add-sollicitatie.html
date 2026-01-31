@@ -6,13 +6,13 @@
       <mat-form-field class="form-field">
         <mat-label>Datum</mat-label>
         <input matInput [matDatepicker]="datumPicker" formControlName="datum"/>
-        <mat-datepicker-toggle matSuffix [for]="datumPicker"></mat-datepicker-toggle>
+        <mat-datepicker-toggle matSuffix [for]="datumPicker" data-test="date_picker_datum"></mat-datepicker-toggle>
         <mat-datepicker #datumPicker></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="form-field">
         <mat-label>Sluitingsdatum</mat-label>
         <input matInput [matDatepicker]="sluitingsdatumPicker" formControlName="sluitingsdatum"/>
-        <mat-datepicker-toggle matSuffix [for]="sluitingsdatumPicker"></mat-datepicker-toggle>
+        <mat-datepicker-toggle matSuffix [for]="sluitingsdatumPicker" data-test="date_picker_sluitingsdatum"></mat-datepicker-toggle>
         <mat-datepicker #sluitingsdatumPicker></mat-datepicker>
       </mat-form-field>
     </div>
@@ -24,7 +24,7 @@
       </mat-form-field>
       <mat-form-field class="form-field">
         <mat-label>Kies een locatie</mat-label>
-        <input matInput formControlName="locatie" [matAutocomplete]="auto" placeholder="...of type een nieuwe locatie"/>
+        <input matInput formControlName="locatie" [matAutocomplete]="auto" placeholder="...of type een nieuwe locatie" data-test="input_locatie"/>
 
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let locatie of (locatie$ | async)" [value]="locatie">
