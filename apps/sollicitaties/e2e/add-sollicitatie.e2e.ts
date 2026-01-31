@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Add Sollicitatie E2E Tests', () => {
   const baseUrl = 'http://localhost:4200';
-  const testEmail = 'test@example.com';
-  const testPassword = 'TestPassword123!';
+  const testEmail = 'test@test.nl';
+  const testPassword = '123456';
 
   // Voorbereidingen voor elke test
   test.beforeEach(async ({ page, context }) => {
