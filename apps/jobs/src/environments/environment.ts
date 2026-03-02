@@ -1,12 +1,14 @@
 export const environment = {
   firebase: {
-    apiKey: (import.meta as any).env.apiKey,
-    authDomain: (import.meta as any).env.authDomain,
-    projectId: (import.meta as any).env.projectId,
-    storageBucket: (import.meta as any).env.storageBucket,
-    messagingSenderId: (import.meta as any).env.messagingSenderId,
-    appId: (import.meta as any).env.appId,
-    measurementId: (import.meta as any).env.measurementId,
+    apiKey: "AIzaSyASBP5jD_9ddk1Gq0X1xUZizl-eRZUgDWI",
+    authDomain: "jobs-marcb.firebaseapp.com",
+    projectId: "jobs-marcb",
+    storageBucket: "jobs-marcb.firebasestorage.app",
+    messagingSenderId: "18104146140",
+    appId: "1:18104146140:web:f3976c7176078028213c19",
+    measurementId: "G-KHD5H0W7J0"  
   },
   production: false,
+  currentBuildCommitSha: null,
+  url: document.location.href
 };
