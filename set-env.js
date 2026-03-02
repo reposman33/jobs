@@ -4,7 +4,7 @@ const path = require('path');
 // Pad vanaf de root naar je environments map
 const targetPath = path.join(__dirname, 'apps/jobs/src/environments/');
 
-const environment = `{
+const environment = `export const environment = {
     firebase: {
         apiKey: '${process.env.apiKey || ""}',
         authDomain: '${process.env.authDomain || ""}',
