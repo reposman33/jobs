@@ -1,0 +1,21 @@
+@use 'app/__variables' as vars;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: vars.$bg-color;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+
+  h1 {
+    @apply text-4xl font-bold text-gray-800 m-0 p-0;
+  }
+
+  h2 {
+    @apply text-2xl font-bold text-gray-800 m-0 p-0;
+  }
+}

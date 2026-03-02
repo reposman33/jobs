@@ -1,0 +1,112 @@
+{
+  "name": "jobs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/jobs/src",
+  "prefix": "app",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "options": {
+        "browser": "apps/jobs/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/jobs/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/jobs/public"
+          },
+          {
+            "glob": "jobsearch.ico",
+            "input": "apps/jobs/src",
+            "output": "."
+          },
+          "apps/jobs/src/assets"
+        ],
+        "styles": [
+          "node_modules/@angular/material/prebuilt-themes/azure-blue.css",
+          "apps/jobs/src/styles.scss"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kB",
+              "maximumError": "1MB"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kB",
+              "maximumError": "8kB"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "jobs:build:production"
+        },
+        "development": {
+          "buildTarget": "jobs:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n"
+    },
+    "test": {
+      "executor": "@angular/build:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/jobs/tsconfig.spec.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/jobs/public"
+          }
+        ],
+        "styles": ["apps/jobs/src/styles.scss"]
+      }
+    },
+    "deploy": {
+      "executor": "@nx-extend/firebase-hosting:deploy",
+      "options": {
+        "site": "jobs"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "options": {
+        "config": "apps/jobs/playwright.config.ts"
+      },
+      "configurations": {
+        "headed": {
+          "headed": true
+        },
+        "debug": {
+          "debug": true
+        }
+      }
+    }
+  }
+}
