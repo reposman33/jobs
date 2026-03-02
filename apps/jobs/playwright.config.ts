@@ -71,7 +71,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'nx serve sollicitaties',
+    command: 'nx serve jobs',
     url: 'http://localhost:4200',
     reuseExistingServer: !process.env['CI'],
   },

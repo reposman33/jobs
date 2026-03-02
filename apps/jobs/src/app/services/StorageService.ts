@@ -29,46 +29,46 @@ export class StorageService {
   // geef een Promise die resolved naar een Sollicitatie []
   //  getDocumentsOnce: wordt niet opnieuw aangeroepen als upstream een document dat aan query voldoet wijzigt
   async getDocumentsOnce(): Promise<Sollicitatie[]> {
-    const ref = collection(this.firestore, 'sollicitaties');
+    const ref = collection(this.firestore, 'jobs');
     const q = query(ref, where('userId', '==', this.authService.userId));
     const docs = await getDocs(q);
-    const sollicitaties: Sollicitatie[] = [];
+    const jobs: Sollicitatie[] = [];
 
     docs.forEach((doc) => {
       const sollicitatie: Sollicitatie = doc.data() as Sollicitatie;
-      sollicitaties.push({ ...sollicitatie, id: doc.id });
+      jobs.push({ ...sollicitatie, id: doc.id });
     });
-    return sollicitaties;
+    return jobs;
   }
 
   // Voeg een nieuwe sollicitatie toe
   addSollicitatie(
     sollicitatie: Sollicitatie
   ): Promise<DocumentReference<DocumentData, DocumentData>> {
-    const sollicitatieRef = collection(this.firestore, 'sollicitaties');
+    const sollicitatieRef = collection(this.firestore, 'jobs');
     return addDoc(sollicitatieRef, sollicitatie);
   }
 
-  // Haal alle sollicitaties op
-  getAllSollicitaties(): Promise<Sollicitatie[]> {
+  // Haal alle jobs op
+  getAlljobs(): Promise<Sollicitatie[]> {
     return this.getDocumentsOnce();
   }
 
   // Update een sollicitatie
   updateSollicitatie(id: string, sollicitatie: Sollicitatie): Promise<void> {
-    const sollicitatieRef = doc(this.firestore, `sollicitaties/${id}`);
+    const sollicitatieRef = doc(this.firestore, `jobs/${id}`);
     return updateDoc(sollicitatieRef, { ...sollicitatie });
   }
 
   // Verwijder een sollicitatie
   deleteSollicitatie(id: string): Promise<void> {
-    const sollicitatieRef = doc(this.firestore, `sollicitaties/${id}`);
+    const sollicitatieRef = doc(this.firestore, `jobs/${id}`);
     return deleteDoc(sollicitatieRef);
   }
 
   // Haal een specifieke sollicitatie op
   getSollicitatieById(id: string): Observable<Sollicitatie> {
-    const sollicitatieRef = doc(this.firestore, `sollicitaties/${id}`);
+    const sollicitatieRef = doc(this.firestore, `jobs/${id}`);
     return from(
       getDoc(sollicitatieRef).then((docSnap) => {
         if (docSnap.exists()) {
@@ -82,9 +82,9 @@ export class StorageService {
 
   getLocaties(): Promise<Pick<Sollicitatie, 'locatie'>[]> {
     return this.getDocumentsOnce().then(
-      (sollicitaties: Sollicitatie[]): Pick<Sollicitatie, 'locatie'>[] => {
+      (jobs: Sollicitatie[]): Pick<Sollicitatie, 'locatie'>[] => {
         const locatiesSet = new Set<Pick<Sollicitatie, 'locatie'>>();
-        sollicitaties.forEach((sollicitatie) => {
+        jobs.forEach((sollicitatie) => {
           if (sollicitatie.locatie) {
             locatiesSet.add(
               sollicitatie.locatie as unknown as Pick<Sollicitatie, 'locatie'>

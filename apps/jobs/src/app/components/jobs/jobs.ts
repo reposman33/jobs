@@ -22,7 +22,7 @@ import { StorageService } from '../../services/StorageService';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-sollicitaties',
+  selector: 'app-jobs',
   imports: [
     DatePipe,
     MatTableModule,
@@ -32,13 +32,13 @@ import { DatePipe } from '@angular/common';
     MatIconModule,
   ],
   providers: [],
-  templateUrl: './sollicitaties.html',
-  styleUrls: ['./sollicitaties.scss'],
+  templateUrl: './jobs.html',
+  styleUrls: ['./jobs.scss'],
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class Sollicitaties {
+export class jobs {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
   @ViewChild(MatTable) table?: MatTable<Sollicitatie>;
@@ -46,10 +46,10 @@ export class Sollicitaties {
   protected dataSource = new MatTableDataSource<Sollicitatie>();
   private router = inject(Router);
   private storageService = inject(StorageService);
-  protected sollicitaties$!: Promise<Sollicitatie[]>;
+  protected jobs$!: Promise<Sollicitatie[]>;
 
   ngOnInit() {
-    this.sollicitaties$ = this.storageService.getAllSollicitaties();
+    this.jobs$ = this.storageService.getAlljobs();
   }
 
   ngAfterViewInit(): void {
@@ -61,7 +61,7 @@ export class Sollicitaties {
       this.sort.sort({ id: 'datum', start: 'desc', disableClear: true });
     }
 
-    this.sollicitaties$.then((data) => {
+    this.jobs$.then((data) => {
       this.dataSource.data = data;
     });
   }

@@ -3,10 +3,10 @@ import { authGuard } from './guards/auth-guard.guard';
 
 export const routes: Routes = [
   {
-    path: 'sollicitaties',
+    path: 'jobs',
     loadComponent: () =>
-      import('./components/sollicitaties/sollicitaties').then(
-        (m) => m.Sollicitaties
+      import('./components/jobs/jobs').then(
+        (m) => m.jobs
       ),
     canActivate: [authGuard],
     canMatch: [authGuard],
@@ -22,22 +22,22 @@ export const routes: Routes = [
       import('./components/registreer/registreer').then((m) => m.Registreer),
   },
   {
-    path: 'add-sollicitatie/:id',
+    path: 'add-job/:id',
     loadComponent: () =>
-      import('./components/add-sollicitatie/add-sollicitatie').then(
+      import('./components/add-job/add-job').then(
         (m) => m.AddSollicitatieComponent
       ),
     canActivate: [authGuard],
   },
   {
-    path: 'add-sollicitatie',
+    path: 'add-job',
     loadComponent: () =>
-      import('./components/add-sollicitatie/add-sollicitatie').then(
+      import('./components/add-job/add-job').then(
         (m) => m.AddSollicitatieComponent
       ),
     canActivate: [authGuard],
   },
-  { path: '', redirectTo: 'sollicitaties', pathMatch: 'full' },
+  { path: '', redirectTo: 'jobs', pathMatch: 'full' },
   {
     path: '**',
     loadComponent: () =>

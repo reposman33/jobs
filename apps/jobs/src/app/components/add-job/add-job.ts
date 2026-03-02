@@ -46,8 +46,8 @@ registerLocaleData(localeNl);
     MatRadioModule,
     MatFormFieldModule,
   ],
-  templateUrl: './add-sollicitatie.html',
-  styleUrls: ['./add-sollicitatie.scss'],
+  templateUrl: './add-job.html',
+  styleUrls: ['./add-job.scss'],
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: LOCALE_ID, useValue: 'nl-NL' }],
@@ -119,7 +119,7 @@ export class AddSollicitatieComponent implements OnInit {
   async updateForm(id: string) {
     this.storageService
       .getSollicitatieById(id)
-      .subscribe((sollicitaties) => this.initializeForm(sollicitaties, id));
+      .subscribe((jobs) => this.initializeForm(jobs, id));
   }
 
   onSubmit(): void {
@@ -130,13 +130,13 @@ export class AddSollicitatieComponent implements OnInit {
           this.form.value.id,
           this.form.value
         );
-        this.activateRoute('sollicitaties');
+        this.activateRoute('jobs');
         return;
       }
       // toevoegen nieuwe sollicitatie
       this.form.value.userId = this.authService.userId;
       this.storageService.addSollicitatie(this.form.value);
-      this.activateRoute('sollicitaties');
+      this.activateRoute('jobs');
     }
   }
 

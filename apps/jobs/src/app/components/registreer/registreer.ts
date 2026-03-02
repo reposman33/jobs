@@ -31,7 +31,7 @@ export class Registreer {
     const { email, password } = this.form.value;
     if (email && password) {
       this.authService.registerWithEmail(email, password).then(() => {
-        this.router.navigateByUrl('/sollicitaties');
+        this.router.navigateByUrl('/jobs');
       });
     }
   }

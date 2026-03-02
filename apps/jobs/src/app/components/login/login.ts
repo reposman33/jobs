@@ -29,19 +29,19 @@ export class Login {
 
   async loginWithGoogle() {
     await this.authService.signInWithGoogle();
-    this.router.navigateByUrl('/sollicitaties');
+    this.router.navigateByUrl('/jobs');
   }
 
   async loginWithGithub() {
     await this.authService.signInWithGithub();
-    this.router.navigateByUrl('/sollicitaties');
+    this.router.navigateByUrl('/jobs');
   }
 
   async registerWithEmail() {
     const { email, password } = this.form.value;
     if (email && password) {
       this.authService.registerWithEmail(email, password).then(() => {
-        this.router.navigateByUrl('/sollicitaties');
+        this.router.navigateByUrl('/jobs');
       });
     }
   }
@@ -50,7 +50,7 @@ export class Login {
     const { email, password } = this.form.value;
     if (email && password) {
       this.authService.signInWithEmail(email, password).then(() => {
-        this.router.navigateByUrl('/sollicitaties');
+        this.router.navigateByUrl('/jobs');
       });
     }
   }

@@ -24,7 +24,7 @@ test.describe('Add Sollicitatie E2E Tests', () => {
     await page.click('button[type="submit"]:has-text("Login")');
 
     // Wacht op navigatie naar de main page
-    await page.waitForURL(`${baseUrl}/sollicitaties`);
+    await page.waitForURL(`${baseUrl}/jobs`);
 
     // Stap 2: Navigeer naar 'Add Sollicitatie' pagina
     await page.click('a:has-text("Add"), button:has-text("Add")');
@@ -75,8 +75,8 @@ test.describe('Add Sollicitatie E2E Tests', () => {
     // dit verhelpt dat de klik op het element niet geregistreerd word
     await submitButton.dispatchEvent('click');
 
-    // Stap 5: Verifieer dat we naar de sollicitaties pagina zijn genavigeerd
-    await page.waitForURL(`${baseUrl}/sollicitaties`);
+    // Stap 5: Verifieer dat we naar de jobs pagina zijn genavigeerd
+    await page.waitForURL(`${baseUrl}/jobs`);
 
     // Stap 6: Verifieer dat de nieuwe sollicitatie in de lijst verschijnt
     const sollicitatieRow = page.locator('text=TechCorp Nederland').first();
@@ -92,7 +92,7 @@ test.describe('Add Sollicitatie E2E Tests', () => {
     await page.fill('input[type="password"]', testPassword);
     await page.click('button[type="submit"]:has-text("Login")');
 
-    await page.waitForURL(`${baseUrl}/sollicitaties`);
+    await page.waitForURL(`${baseUrl}/jobs`);
     await page.click('a:has-text("Add"), button:has-text("Add")');
 
     // Probeer formulier in te dienen zonder invullen
@@ -109,7 +109,7 @@ test.describe('Add Sollicitatie E2E Tests', () => {
     await page.fill('input[type="password"]', testPassword);
     await page.click('button[type="submit"]:has-text("Login")');
 
-    await page.waitForURL(`${baseUrl}/sollicitaties`);
+    await page.waitForURL(`${baseUrl}/jobs`);
     await page.click('a:has-text("Add"), button:has-text("Add")');
 
     // Vul enige data in
@@ -118,7 +118,7 @@ test.describe('Add Sollicitatie E2E Tests', () => {
     // Klik cancel
     await page.click('[data-test="button_cancel"]');
 
-    // Verifieer dat we terug zijn op sollicitaties pagina
+    // Verifieer dat we terug zijn op jobs pagina
     const datumInput = page.locator('[formControlName="datum"]');
     const bedrijfInput = page.locator('input[formControlName="bedrijf"]');
     const locatieInput = page.locator('input[formControlName="locatie"]');
@@ -144,7 +144,7 @@ test.describe('Add Sollicitatie E2E Tests', () => {
     await page.fill('input[type="password"]', testPassword);
     await page.click('button[type="submit"]:has-text("Login")');
 
-    await page.waitForURL(`${baseUrl}/sollicitaties`);
+    await page.waitForURL(`${baseUrl}/jobs`);
     await page.click('a:has-text("add"), button:has-text("add")');
 
     // Open datepicker.
@@ -166,7 +166,7 @@ test.describe('Add Sollicitatie E2E Tests', () => {
     await page.fill('input[type="password"]', testPassword);
     await page.click('button[type="submit"]:has-text("Login")');
 
-    await page.waitForURL(`${baseUrl}/sollicitaties`);
+    await page.waitForURL(`${baseUrl}/jobs`);
     await page.click('a:has-text("Add"), button:has-text("Add")');
 
     // Klik op locatie field

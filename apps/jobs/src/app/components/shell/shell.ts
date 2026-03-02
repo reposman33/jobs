@@ -3,11 +3,11 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { Sollicitaties } from '../sollicitaties/sollicitaties';
+import { jobs } from '../jobs/jobs';
 
 @Component({
   selector: 'app-shell',
-  imports: [Sollicitaties],
+  imports: [jobs],
   templateUrl: './shell.html',
   styleUrl: './shell.scss',
   encapsulation: ViewEncapsulation.Emulated,
