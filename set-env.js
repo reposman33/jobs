@@ -6,17 +6,17 @@ const targetPath = path.join(__dirname, 'apps/jobs/src/environments/');
 
 const environment = `export const environment = {
     firebase: {
-        apiKey: process.env['apiKey']!,
-        authDomain: process.env['authDomain']!,
-        projectId: process.env['projectId']!,
-        storageBucket: process.env['storageBucket']!,
-        messagingSenderId: process.env['messagingSenderId']!,
-        appId: process.env['appId']!,
-        measurementId: process.env['measurementId']!
+        apiKey: '${process.env.apiKey || ""}',
+        authDomain: '${process.env.authDomain || ""}',
+        projectId: '${process.env.projectId || ""}',
+        storageBucket: '${process.env.storageBucket || ""}',
+        messagingSenderId: '${process.env.messagingSenderId || ""}',
+        appId: '${process.env.appId || ""}',
+        measurementId: '${process.env.appId || ""}'
     },
     production: true,
-    currentBuildCommitSha: process.env['VERCEL_GIT_COMMIT_SHA'],
-    vercelUrl: process.env['VERCEL_URL']
+    currentBuildCommitSha: '${process.env.VERCEL_GIT_COMMIT_SHA}',
+    vercelUrl: '${process.env.VERCEL_URL}'
 }
 `;
 
