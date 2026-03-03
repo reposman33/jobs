@@ -12,6 +12,7 @@ const environment = `export const environment = {
         storageBucket: '${process.env.storageBucket || ""}',
         messagingSenderId: '${process.env.messagingSenderId || ""}',
         appId: '${process.env.appId || ""}'
+        measurementId: '${process.env.appId || ""}'
     },
     production: true,
     currentBuildCommitSha: '${process.env.VERCEL_GIT_COMMIT_SHA}',
@@ -25,8 +26,8 @@ if (!fs.existsSync(targetPath)){
 }
 
 try {
-    fs.writeFileSync(targetPath + 'environment.prod.ts', environment, 'utf8');
-    console.log(`✅ Bestand succesvol aangemaakt op: ${targetPath}environment.prod.ts`);
+    fs.writeFileSync(targetPath + 'environment.ts', environment, 'utf8');
+    console.log(`✅ Bestand succesvol aangemaakt op: ${targetPath}environment.ts`);
 } catch (err) {
     console.error('❌ Fout bij aanmaken bestand:', err);
     process.exit(1);
