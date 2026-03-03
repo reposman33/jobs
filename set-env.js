@@ -11,7 +11,7 @@ const environment = `export const environment = {
         projectId: '${process.env.projectId || ""}',
         storageBucket: '${process.env.storageBucket || ""}',
         messagingSenderId: '${process.env.messagingSenderId || ""}',
-        appId: '${process.env.appId || ""}'
+        appId: '${process.env.appId || ""}',
         measurementId: '${process.env.appId || ""}'
     },
     production: true,
