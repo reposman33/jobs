@@ -3,6 +3,7 @@ const path = require('path');
 
 // Pad vanaf de root naar je environments map
 const targetPath = path.join(__dirname, 'apps/jobs/src/environments/');
+const nu = new Date();
 
 const environment = `export const environment = {
     firebase: {
@@ -17,7 +18,7 @@ const environment = `export const environment = {
     PRODUCTION: true,
     BUILD_COMMIT: '${process.env.VERCEL_GIT_COMMIT_SHA}',
     VERCEL_URL: '${process.env.VERCEL_URL}',
-    BUILD_DATE: new Date().toISOString()
+    BUILD_DATE: nu.toLocaleString("sv-SE", { timeZone: "Europe/Amsterdam",hour12: false })
 }
 `;
 
