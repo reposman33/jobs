@@ -69,4 +69,8 @@
   >
     <mat-icon class="flex flex-col">add</mat-icon>
   </button>
+
+  @if(BUILD_COMMIT){
+    <div class="text-sm text-blue-500 self-end">Commit SHA: {{ BUILD_COMMIT }} @ {{ BUILD_DATE }}</div>
+  }
 </div>

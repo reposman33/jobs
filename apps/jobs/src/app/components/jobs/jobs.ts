@@ -20,6 +20,7 @@ import { MatSort } from '@angular/material/sort';
 import { Sollicitatie } from '../../../../models/sollicitatie.interface';
 import { StorageService } from '../../services/StorageService';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../environments';
 
 @Component({
   selector: 'app-jobs',
@@ -47,6 +48,8 @@ export class jobs {
   private router = inject(Router);
   private storageService = inject(StorageService);
   protected jobs$!: Promise<Sollicitatie[]>;
+  protected BUILD_COMMIT = environment.BUILD_COMMIT;
+  protected BUILD_DATE = environment.BUILD_DATE;
 
   ngOnInit() {
     this.jobs$ = this.storageService.getAlljobs();

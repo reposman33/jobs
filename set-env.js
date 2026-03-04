@@ -14,9 +14,10 @@ const environment = `export const environment = {
         appId: '${process.env.appId || ""}',
         measurementId: '${process.env.appId || ""}'
     },
-    production: true,
-    currentBuildCommitSha: '${process.env.VERCEL_GIT_COMMIT_SHA}',
-    vercelUrl: '${process.env.VERCEL_URL}'
+    PRODUCTION: true,
+    BUILD_COMMIT: '${process.env.VERCEL_GIT_COMMIT_SHA}',
+    VERCEL_URL: '${process.env.VERCEL_URL}',
+    BUILD_DATE: new Date().toLocaleString()
 }
 `;
 
