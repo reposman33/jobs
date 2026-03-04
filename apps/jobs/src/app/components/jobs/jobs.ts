@@ -48,7 +48,7 @@ export class jobs {
   private router = inject(Router);
   private storageService = inject(StorageService);
   protected jobs$!: Promise<Sollicitatie[]>;
-  protected BUILD_COMMIT = environment.BUILD_COMMIT;
+  protected BUILD_COMMIT = environment.BUILD_COMMIT.substring(0, 5);
   protected BUILD_DATE = environment.BUILD_DATE;
 
   ngOnInit() {
