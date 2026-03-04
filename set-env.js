@@ -4,6 +4,7 @@ const path = require('path');
 // Pad vanaf de root naar je environments map
 const targetPath = path.join(__dirname, 'apps/jobs/src/environments/');
 const nu = new Date();
+const nu = new Date();
 
 const environment = `export const environment = {
     firebase: {
