@@ -18,7 +18,7 @@ const environment = `export const environment = {
     PRODUCTION: true,
     BUILD_COMMIT: '${process.env.VERCEL_GIT_COMMIT_SHA}',
     VERCEL_URL: '${process.env.VERCEL_URL}',
-    BUILD_DATE: ${nu}.toLocaleString("sv-SE", { timeZone: "Europe/Amsterdam",hour12: false })
+    BUILD_DATE: ${nu.toLocaleString("sv-SE", { timeZone: "Europe/Amsterdam",hour12: false })}
 }
 `;
 
