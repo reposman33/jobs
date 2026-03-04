@@ -17,7 +17,7 @@ const environment = `export const environment = {
     PRODUCTION: true,
     BUILD_COMMIT: '${process.env.VERCEL_GIT_COMMIT_SHA}',
     VERCEL_URL: '${process.env.VERCEL_URL}',
-    BUILD_DATE: new Date().toLocaleString()
+    BUILD_DATE: new Date().toISOString()
 }
 `;
 
