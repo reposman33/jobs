@@ -53,7 +53,6 @@ export class jobs {
 
   ngOnInit() {
     this.jobs$ = this.storageService.getAlljobs();
-    console.log('environment:', environment);
   }
 
   ngAfterViewInit(): void {
