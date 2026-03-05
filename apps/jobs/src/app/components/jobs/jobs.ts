@@ -78,7 +78,7 @@ export class jobs {
   }
 
   toonSollicitatie(id: string) {
-    this.activateRoute('/add-sollicitatie', id);
+    this.activateRoute('/add-job', id);
   }
 
   activateRoute(route: string, id: string | null = null): void {
