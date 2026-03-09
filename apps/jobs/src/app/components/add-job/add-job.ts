@@ -78,25 +78,24 @@ export class AddSollicitatieComponent implements OnInit {
         {
           value: sollicitatie
             ? this.convertFirestoreTimestamp(sollicitatie.datum)
-            : '',
-          disabled: id.length > 0,
+            : ''
         },
         [Validators.required],
       ],
       aanvraag: [
-        { value: sollicitatie?.aanvraag || '', disabled: id.length > 0 },
+        { value: sollicitatie?.aanvraag || '', disabled: false },
         [Validators.required],
       ],
       bedrijf: [
-        { value: sollicitatie?.bedrijf || '', disabled: id.length > 0 },
+        { value: sollicitatie?.bedrijf || '', disabled: false },
         [Validators.required],
       ],
       locatie: [
-        { value: sollicitatie?.locatie || '', disabled: id.length > 0 },
+        { value: sollicitatie?.locatie || '', disabled: false },
         [Validators.required],
       ],
       motivatie: [
-        { value: sollicitatie?.motivatie || '', disabled: id.length > 0 },
+        { value: sollicitatie?.motivatie || '', disabled: false },
         [Validators.required],
       ],
       sluitingsdatum: [
@@ -104,7 +103,7 @@ export class AddSollicitatieComponent implements OnInit {
           value: sollicitatie
             ? this.convertFirestoreTimestamp(sollicitatie.sluitingsdatum)
             : '',
-          disabled: id.length > 0,
+          disabled: false,
         },
         [],
       ],
