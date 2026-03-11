@@ -95,4 +95,23 @@ export class StorageService {
       }
     );
   }
+
+  /**
+   * firestore document sluitingsdatum veld heeft een mix van lege string en null waarden,
+   * deze functie zet alle lege string waarden om naar null
+   */
+  async fixSluitingsdatumType() {
+    const colRef = collection(this.firestore, 'jobs');
+    const q = query(colRef, where('sluitingsdatum', '==', ''));
+    const querySnapshot = await getDocs(q);
+    
+    console.log(querySnapshot.size, 'documents found with sluitingsdatum as ""');
+
+    querySnapshot.forEach(async (docSnap) => {
+      const docRef = doc(this.firestore, `jobs/${docSnap.id}`);
+      await updateDoc(docRef, { sluitingsdatum: null });
+      
+      console.log(`Updated sollicitatie bij ${docSnap.get('bedrijf')} to set sluitingsdatum to null`);
+    });
+  }
 }
