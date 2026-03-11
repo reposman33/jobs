@@ -74,12 +74,7 @@ export class AddSollicitatieComponent implements OnInit {
 
   initializeForm(sollicitatie: Sollicitatie | null = null, id = ''): void {
     this.form = this.fb.group({
-      datum: [
-        {
-          value: sollicitatie
-            ? this.convertFirestoreTimestamp(sollicitatie.datum)
-            : ''
-        },
+      datum: [ this.getDate(sollicitatie?.datum),
         [Validators.required],
       ],
       aanvraag: [
@@ -99,12 +94,7 @@ export class AddSollicitatieComponent implements OnInit {
         [Validators.required],
       ],
       sluitingsdatum: [
-        {
-          value: sollicitatie
-            ? this.convertFirestoreTimestamp(sollicitatie.sluitingsdatum)
-            : '',
-          disabled: false,
-        },
+        this.getDate(sollicitatie?.sluitingsdatum),
         [],
       ],
       updates: [sollicitatie?.updates || ''],
@@ -147,16 +137,11 @@ export class AddSollicitatieComponent implements OnInit {
     this.router.navigate([route]);
   }
 
-  convertFirestoreTimestamp(timestamp: string | undefined): string {
-    if (!timestamp) {
-      return '';
+  private getDate(value: any): Date | null {
+    if(value && typeof (value as any).toDate === 'function')
+      return value.toDate();
+    else {
+      return null;
     }
-    // Cast naar Timestamp
-    const firestoreTimestamp = timestamp as unknown as Timestamp;
-    const date = firestoreTimestamp.toDate(); // Je kunt nu veilig de toDate() methode aanroepen
-    // return date.toISOString().split('T')[0];
-    return (
-      this.datePipe.transform(date, 'yyyy-MM-dd', undefined, 'nl-NL') || ''
-    );
   }
 }
