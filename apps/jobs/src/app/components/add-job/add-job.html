@@ -88,29 +88,30 @@
     <div class="form-actions">
       <button
         mat-raised-button
-        type="button"
-        (click)="onCancel()"
-        data-test="button_cancel"
+        (click)="activateRoute('jobs')"
+        title="Toon jobs"
       >
-        Wis formulier
+        <mat-icon class="px-3">arrow_back_ios</mat-icon>
       </button>
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        [disabled]="!form.valid"
-      >
-        OK
-      </button>
+      <div class="flex gap-3">
+        <button
+          mat-raised-button
+          type="button"
+          (click)="onCancel()"
+          data-test="button_cancel"
+        >
+          Wis formulier
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!form.valid"
+        >
+          OK
+        </button>
+      </div>
     </div>
   </form>
 
-  <button
-    mat-fab
-    class="fab-button flex flex-col self-start"
-    (click)="activateRoute('jobs')"
-    title="Toon jobs"
-  >
-    <mat-icon class="flex justify-start">arrow_back_ios</mat-icon>
-  </button>
 </div>
