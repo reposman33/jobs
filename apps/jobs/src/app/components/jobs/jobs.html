@@ -61,14 +61,17 @@
     </mat-paginator>
   </div>
 
-  <button
-    mat-fab
-    class="fab-button flex flex-col self-end"
-    (click)="activateRoute('/add-job')"
-    title="Nieuwe sollicitatie toevoegen"
-  >
-    <mat-icon class="flex flex-col">add</mat-icon>
-  </button>
+  <div class="flex justify-between">
+    <app-search></app-search>
+    <button
+      mat-fab
+      class="fab-button flex flex-col self-end"
+      (click)="activateRoute('/add-job')"
+      title="Nieuwe sollicitatie toevoegen"
+    >
+      <mat-icon class="flex flex-col">add</mat-icon>
+    </button>
+  </div>
 
   @if(BUILD_COMMIT){
     <div class="text-xs text-blue-400 self-end">{{ BUILD_COMMIT }}@{{ BUILD_DATE }}</div>

@@ -21,6 +21,7 @@ import { Sollicitatie } from '../../../../models/sollicitatie.interface';
 import { StorageService } from '../../services/StorageService';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../environments';
+import { Search } from '../search/search';
 
 @Component({
   selector: 'app-jobs',
@@ -31,6 +32,7 @@ import { environment } from '../../../environments';
     MatSortModule,
     MatButtonModule,
     MatIconModule,
+    Search
   ],
   providers: [],
   templateUrl: './jobs.html',
