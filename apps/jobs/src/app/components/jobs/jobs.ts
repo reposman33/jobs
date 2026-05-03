@@ -71,14 +71,6 @@ export class jobs {
     });
   }
 
-  getLimitedSentences(text: string): string {
-    if (!text.length) {
-      return '';
-    }
-    const truncatedText = text.substring(0, 55);
-    return truncatedText < text ? truncatedText + '...' : text;
-  }
-
   toonSollicitatie(id: string) {
     this.activateRoute('/add-job', id);
   }
@@ -89,5 +81,13 @@ export class jobs {
     } else {
       this.router.navigate([route]);
     }
+  }
+
+  onSearch($event: string): void {
+    this.storageService.searchSollicitaties($event).then((data) => {
+      this.dataSource.data = data;
+      this.paginator?.firstPage();
+      this.sort?.sort({ id: 'datum', start: 'desc', disableClear: true });
+    });
   }
 }
