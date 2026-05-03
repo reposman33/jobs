@@ -54,7 +54,6 @@ registerLocaleData(localeNl);
 })
 export class AddSollicitatieComponent implements OnInit {
   private cdr = inject(ChangeDetectorRef);
-  private datePipe = new DatePipe('nl-NL');
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
