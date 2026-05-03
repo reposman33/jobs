@@ -1,1 +1,9 @@
-<p>search works!</p>
+<div [formGroup]="searchForm">
+  <mat-form-field class="mb-[-12px] w-5/6">
+    <mat-label>Zoek job</mat-label>
+    <input matInput formControlName="search" placeholder="Zoek op bedrijf, tekst in de aanvraag" class="w-3/6"/>
+  </mat-form-field>
+  <button matButton="elevated" type="submit" class="ml-3 mb-2" (click)="onSearch()">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>

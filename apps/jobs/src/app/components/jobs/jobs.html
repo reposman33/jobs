@@ -61,15 +61,15 @@
     </mat-paginator>
   </div>
 
-  <div class="flex justify-between">
-    <app-search></app-search>
+  <div class="flex w-full items-center justify-between gap-4">
+    <app-search class="w-3/6 shrink-0" (search)="onSearch($event)"></app-search>
     <button
-      mat-fab
-      class="fab-button flex flex-col self-end"
+      matButton="elevated"
+      class=" shrink-0 flex flex-col p-0 h-10 w-10"
       (click)="activateRoute('/add-job')"
       title="Nieuwe sollicitatie toevoegen"
     >
-      <mat-icon class="flex flex-col">add</mat-icon>
+      <mat-icon>add</mat-icon>
     </button>
   </div>
 
