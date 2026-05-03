@@ -9,6 +9,9 @@ export default [
       '**/dist',
       '**/vite.config.*.timestamp*',
       '**/vitest.config.*.timestamp*',
+      ".angular/cache/*",
+      "dist/",
+      "node_modules/"
     ],
   },
   {

@@ -13,7 +13,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,7 +26,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { StorageService } from '../../services/StorageService';
 import { Sollicitatie } from '../../../../models/sollicitatie.interface';
-import { Timestamp } from '@angular/fire/firestore';
 import { AuthService } from '../../services/auth-service';
 
 registerLocaleData(localeNl);

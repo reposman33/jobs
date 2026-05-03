@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,13 +24,6 @@ export class Search {
   searchForm = new FormGroup({
       search: new FormControl('')
   });
-
-  ngOnInit() {
-    this.searchForm.get('search')?.valueChanges.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    );
-  }
 
   onSearch() {
     const query = this.searchForm.get('search')?.value;

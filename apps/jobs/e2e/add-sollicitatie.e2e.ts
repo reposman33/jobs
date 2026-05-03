@@ -32,7 +32,6 @@ test.describe('Add Sollicitatie E2E Tests', () => {
 
     // Stap 3: Vul het formulier in
     const today = new Date();
-    const dateString = today.toLocaleDateString('nl-NL');
 
     // Datum invullen
     await page.click('[data-test="date_picker_datum"]');
