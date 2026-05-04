@@ -7,13 +7,8 @@
     />
   </div>
 
-  <div
-    [ngClass]="{
-    'header-section': true,
-    'align-right': (authService.isAuthenticated$ | async),
-    'align-center': !(authService.isAuthenticated$ | async)}"
-  >
-    <h1 class="title-center">jobs</h1>
+  <div class="justify-self-center text-center">
+    <h1 class="text-4xl font-bold text-gray-800">jobs</h1>
   </div>
 
   <div class="header-section">
