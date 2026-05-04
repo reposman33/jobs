@@ -1,46 +1,8 @@
 @use '../../_variables' as vars;
-/* stylelint-disable-next-line at-rule-no-unknown */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :host {
-  @apply w-full flex flex-col items-center;
-}
-
-.header {
-  @apply flex items-center justify-between w-4/5 h-16 p-4 mb-8 rounded-lg bg-[var(--container-bg-color)];
-
-  .header-section {
-    @apply flex items-center w-[26vw];
-
-    &.align-center {
-      @apply justify-center ml-2;
-    }
-
-    &.align-right {
-      @apply justify-end flex-1 pr-3;
-    }
-
-    &.header-section button.mdc-button {
-      width: 124px;
-    }
-
-    & .title-center {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin: 0;
-      /* Zorg dat de titel niet over je logo heen valt op kleine schermen */
-      white-space: nowrap;
-    }
-
-    & h1 {
-      @apply text-4xl font-bold text-gray-800;
-    }
-
-    & span {
-      @apply ml-0 mr-3 text-xs text-gray-500;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }

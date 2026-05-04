@@ -1,8 +1,8 @@
-<div class="header">
-  <div>
+<div class="grid grid-cols-3 items-center w-4/5 h-16 pb-4 mb-8 rounded-lg bg-[var(--container-bg-color)]">
+  <div class="justify-self-start ml-3">
     <img
       src="../../../assets/img/jobsearch.svg"
-      width="64px"
+      width="58px"
       alt="Plaatje van een krant met baan advertenties"
     />
   </div>
@@ -11,13 +11,13 @@
     <h1 class="text-4xl font-bold text-gray-800">jobs</h1>
   </div>
 
-  <div class="header-section">
+  <div class="flex items-center w-[26vw]">
     @if(authService.isAuthenticated$ | async) {
-    <span
-      >Laatste login: {{ (lastLogin$ | async) | date:'EEEE d MMMM y HH:MM:ss'
-      }}</span
+    <span class="ml-0 mr-3 text-xs text-gray-500">
+      Laatste login: {{ (lastLogin$ | async) | date:'EEEE d MMMM y HH:MM:ss'}}
+    </span
     >
-    <button mat-flat-button (click)="signOut()" class="!bg-[var(--brand-color)]">Log uit</button>
+    <button mat-flat-button (click)="signOut()" class="!bg-[var(--brand-color)] w-(124px)">Log uit</button>
     }
   </div>
 </div>
