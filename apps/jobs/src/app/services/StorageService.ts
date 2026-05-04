@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   Firestore,
   collection,
@@ -24,7 +24,10 @@ import { AuthService } from './auth-service';
 })
 export class StorageService {
   protected querySnapshot!: QuerySnapshot<DocumentData>;
-  constructor(private firestore: Firestore, private authService: AuthService) {}
+  private _current_paginator_page = 0; 
+
+  private firestore = inject(Firestore)
+  private authService = inject(AuthService)
 
   // geef een Promise die resolved naar een Sollicitatie []
   //  getDocumentsOnce: wordt niet opnieuw aangeroepen als upstream een document dat aan query voldoet wijzigt
@@ -122,5 +125,13 @@ export class StorageService {
       await updateDoc(docRef, { sluitingsdatum: null });
      
     });
+  }
+
+  get currentPaginatorPage(): number {
+    return this._current_paginator_page;
+  }
+
+  set currentPaginatorPage(page: number) {
+    this._current_paginator_page = page;
   }
 }

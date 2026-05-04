@@ -10,7 +10,7 @@ import {
   MatTable,
   MatTableDataSource,
 } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -53,26 +53,24 @@ export class jobs {
   protected BUILD_COMMIT = environment.BUILD_COMMIT.substring(0, 5);
   protected BUILD_DATE = environment.BUILD_DATE;
 
-  ngOnInit() {
-    this.jobs$ = this.storageService.getAlljobs();
-  }
+  async ngAfterViewInit(): Promise<void> {
 
-  ngAfterViewInit(): void {
+    this.dataSource.data = await this.storageService.getAlljobs();
+    
     if (this.paginator) {
+      this.paginator.pageIndex = this.storageService.currentPaginatorPage; // Herstel de pagina-index bij het initialiseren van de paginator
       this.dataSource.paginator = this.paginator;
+
+      this.paginator.page.subscribe((event: PageEvent) => {
+        this.storageService.currentPaginatorPage = event.pageIndex; // Sla de huidige pagina-index op in de service
+      });
+      
     }
     if (this.sort) {
       this.dataSource.sort = this.sort;
       this.sort.sort({ id: 'datum', start: 'desc', disableClear: true });
     }
 
-    this.jobs$.then((data) => {
-      this.dataSource.data = data;
-    });
-  }
-
-  toonSollicitatie(id: string) {
-    this.activateRoute('/add-job', id);
   }
 
   activateRoute(route: string, id: string | null = null): void {
@@ -86,7 +84,6 @@ export class jobs {
   onSearch($event: string): void {
     this.storageService.searchSollicitaties($event).then((data) => {
       this.dataSource.data = data;
-      this.paginator?.firstPage();
       this.sort?.sort({ id: 'datum', start: 'desc', disableClear: true });
     });
   }
