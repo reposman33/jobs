@@ -1,9 +1,6 @@
-<form [formGroup]="searchForm" (ngSubmit)="onSearch()">
-  <mat-form-field class="mb-[-12px] w-5/6">
-    <mat-label>Zoek job</mat-label>
-    <input matInput formControlName="search" placeholder="Zoek op bedrijf" class="w-3/6"/>
-  </mat-form-field>
-  <button matButton="elevated" type="submit" class="ml-3 mb-2" (click)="onSearch()">
+<form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="flex flex-1">
+  <input matInput formControlName="search" placeholder="Zoek op bedrijf" class="w-full md:min-w-[200px] sm:max-w-[200px] border border-gray-200 p-3 text-sm text-gray-500 placeholder-gray-500 outline-none rounded-tl-3xl rounded-bl-3xl"/>
+  <button type="submit" class="px-4 md:px-9 py-3 text-white bg-[var(--brand-color)] rounded-tr-3xl rounded-br-3xl" (click)="onSearch()">
     <mat-icon>search</mat-icon>
   </button>
 </form>
