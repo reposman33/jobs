@@ -1,13 +1,13 @@
 @use 'sass:color';
 
-$bg-color: #3b6dc4;
+$brand-color: #3d7bb8;
+$bg-color: #{$brand-color};
 $container-bg-color: #f5eab4;
 $row-bg-color: #c4923b;
-$cell-bg-color: #3d7bb8;
-$cell-odd-bg-color: $cell-bg-color;
-$cell-even-bg-color: color.scale($cell-bg-color, $lightness: 30%);
-$cell-odd-hover-bg-color: color.scale($cell-bg-color, $lightness: 60%);
-$cell-even-hover-bg-color: color.scale($cell-bg-color, $lightness: 60%);
+$cell-odd-bg-color: #{$brand-color};
+$cell-even-bg-color: color.scale($brand-color, $lightness: 30%);
+$cell-odd-hover-bg-color: color.scale($brand-color, $lightness: 60%);
+$cell-even-hover-bg-color: color.scale($brand-color, $lightness: 60%);
 $status-accepted-color: green;
 $status-pending-color: orange;
 $status-rejected-color: grey;
@@ -19,3 +19,25 @@ $border-radius-cell-row-end: 21px;
 $box-shadow-default: 0 1px 3px rgba(0, 0, 0, 0.1);
 $box-shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.1);
 $icon-size-fab: 64px;
+
+:root {
+  --bg-color: #{$bg-color};
+  --container-bg-color: #{$container-bg-color};
+  --row-bg-color: #{$row-bg-color};
+  --brand-color: #{$brand-color};
+  --cell-odd-bg-color: var(--brand-color);
+  --cell-even-bg-color: color.scale(var(--brand-color), $lightness: 30%);
+  --cell-odd-hover-bg-color: color.scale(var(--brand-color), $lightness: 60%);
+  --cell-even-hover-bg-color: color.scale(var(--brand-color), $lightness: 60%);
+  --status-accepted-color: #{$status-accepted-color};
+  --status-pending-color: #{$status-pending-color};
+  --status-rejected-color: #{$status-rejected-color};
+
+  --table-x-padding: #{$table-x-padding};
+  --border-color: #{$border-color};
+  --border-radius-cell: #{$border-radius-cell};
+  --border-radius-cell-row-end: #{$border-radius-cell-row-end};
+  --box-shadow-default: #{$box-shadow-default};
+  --box-shadow-hover: #{$box-shadow-hover};
+}
+

@@ -96,6 +96,18 @@ export class StorageService {
     );
   }
 
+  async searchSollicitaties(searchText: string): Promise<Sollicitatie[]> {
+    const jobs = await this.getDocumentsOnce();
+    const needle = searchText.trim().toLowerCase();
+    if (!needle) {
+      return jobs;
+    }
+    return jobs.filter(
+      (j) =>
+        j.bedrijf?.toLowerCase().includes(needle)
+    );
+  }
+
   /**
    * firestore document sluitingsdatum veld heeft een mix van lege string en null waarden,
    * deze functie zet alle lege string waarden om naar null
@@ -105,13 +117,10 @@ export class StorageService {
     const q = query(colRef, where('sluitingsdatum', '==', ''));
     const querySnapshot = await getDocs(q);
     
-    console.log(querySnapshot.size, 'documents found with sluitingsdatum as ""');
-
     querySnapshot.forEach(async (docSnap) => {
       const docRef = doc(this.firestore, `jobs/${docSnap.id}`);
       await updateDoc(docRef, { sluitingsdatum: null });
-      
-      console.log(`Updated sollicitatie bij ${docSnap.get('bedrijf')} to set sluitingsdatum to null`);
+     
     });
   }
 }
