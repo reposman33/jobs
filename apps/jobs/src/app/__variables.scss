@@ -1,9 +1,9 @@
 @use 'sass:color';
 
-$bg-color: #3b6dc4;
+$brand-color: #3d7bb8;
+$bg-color: #{$brand-color};
 $container-bg-color: #f5eab4;
 $row-bg-color: #c4923b;
-$brand-color: #3d7bb8;
 $cell-odd-bg-color: #{$brand-color};
 $cell-even-bg-color: color.scale($brand-color, $lightness: 30%);
 $cell-odd-hover-bg-color: color.scale($brand-color, $lightness: 60%);
