@@ -74,11 +74,11 @@
     <app-search class="w-3/6 shrink-0" (search)="onSearch($event)"></app-search>
     <button
       matButton="elevated"
-      class=" shrink-0 flex flex-col p-0 h-10 w-10"
+      class=" shrink-0 flex flex-col p-0 h-10 w-10 !bg-[var(--brand-color)] rounded-full !text-white items-center justify-center"
       (click)="activateRoute('/add-job')"
       title="Nieuwe sollicitatie toevoegen"
     >
-      <mat-icon>add</mat-icon>
+      <mat-icon class="m-0 font-bold">add</mat-icon>
     </button>
   </div>
 
