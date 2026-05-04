@@ -104,7 +104,6 @@ export class StorageService {
     }
     return jobs.filter(
       (j) =>
-        j.aanvraag?.toLowerCase().includes(needle) ||
         j.bedrijf?.toLowerCase().includes(needle)
     );
   }
