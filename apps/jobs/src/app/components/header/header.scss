@@ -9,8 +9,7 @@
 }
 
 .header {
-  @apply flex items-center justify-between w-4/5 h-16 p-4 mb-8 rounded-lg;
-  background-color: vars.$container-bg-color;
+  @apply flex items-center justify-between w-4/5 h-16 p-4 mb-8 rounded-lg bg-[var(--container-bg-color)];
 
   .header-section {
     @apply flex items-center w-[26vw];
