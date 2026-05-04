@@ -54,7 +54,7 @@
         <tr
           mat-row
           *matRowDef="let row;columns: ['datum', 'bedrijf', 'locatie', 'status'];"
-          (click)="toonSollicitatie(row.id)"
+          (click)="activateRoute('/add-job', row.id)"
         ></tr>
       </table>
   }
