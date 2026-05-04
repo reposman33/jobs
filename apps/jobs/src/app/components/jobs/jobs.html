@@ -1,8 +1,10 @@
 <div class="flex flex-col gap-8 h-6 p-8">
   <div class="rowContainer">
     @if(dataSource.data.length === 0){
-      <mat-icon>  </mat-icon>
-      <p>Niks gevonden voor deze zoekopdracht.</p>
+      <div class="flex items-center gap-2 text-gray-500">
+        <mat-icon>manage_search</mat-icon>
+        <p class="m-0">Niks gevonden voor deze zoekopdracht.</p>
+      </div>
     }
     @else {
       <table
