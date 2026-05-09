@@ -95,4 +95,23 @@ table[mat-table] {
       white-space: pre-wrap;
     }
   }
+
+  // zet de kolom breedtes vast zodat ze niet veranderen bij sorteren
+  .mat-column-datum {
+    width: 275px
+  }
+
+  .mat-column-bedrijf {
+    width: 450px
+  }
+
+  .mat-column-locatie {
+    width: 200px
+  }
+
+  .mat-column-status {
+    width: 200px
+  }
+
+
 }
