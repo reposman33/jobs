@@ -67,11 +67,11 @@ export class jobs {
   protected jobs$!: Promise<Sollicitatie[]>;
   protected BUILD_COMMIT = environment.BUILD_COMMIT.substring(0, 5);
   protected BUILD_DATE = environment.BUILD_DATE;
-  tableData = signal<any[]>([])
+  tableDataExists = signal<boolean>(true)
 
   ngOnInit(){
     this.storageService.getAlljobs().then(data => {
-      this.tableData.set(data)
+      this.tableDataExists.set(data.length > 0)
       this.dataSource.data = data
     });
   }
@@ -89,6 +89,7 @@ export class jobs {
   onSearch($event: string): void {
     this.storageService.searchSollicitaties($event).then((data) => {
       this.dataSource.data = data;
+      this.tableDataExists.set(data.length > 0)
       if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
       }
