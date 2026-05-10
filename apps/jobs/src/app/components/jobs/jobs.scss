@@ -3,7 +3,7 @@
 table[mat-table] {
   border-collapse: separate;
   border-spacing: 0 8px;
-  padding: 0 vars.$table-x-padding;
+  padding: 0 vars.$table-x-padding 1rem;
 
   [mat-header-cell] {
     border: none;
@@ -113,5 +113,13 @@ table[mat-table] {
     width: 200px
   }
 
+}
 
+.mat-mdc-paginator{
+  border: none;
+  background-color: transparent;
+  background-color: white;
+  border-radius: vars.$border-radius-cell-row-end;
+  font-weight: bold;
+  font-size: 0.875rem;
 }

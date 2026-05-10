@@ -1,76 +1,77 @@
-<div class="flex flex-col gap-8 h-6 p-8">
-  <div class="rowContainer">
-    <table
-        mat-table
-        [dataSource]="dataSource"
-        matSort
-        #sort="matSort"
-        class="mat-elevation-z8 fixed-table"
-      >
-      <!-- Datum Column -->
-      <ng-container matColumnDef="datum">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>DATUM</th>
-        <td mat-cell *matCellDef="let element">
-          {{element.datum ? (element.datum.toDate() | date:'EEEE, d MMMM y') : null}}
-        </td>
-      </ng-container>
+<div class="flex flex-col gap-8 h-6 px-8">
 
-      <!-- Bedrijf Column -->
-      <ng-container matColumnDef="bedrijf">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>BEDRIJF</th>
-        <td mat-cell *matCellDef="let element">{{element.bedrijf}}</td>
-      </ng-container>
+    @if(tableDataExists()) {
+      <table
+          mat-table
+          [dataSource]="dataSource"
+          matSort
+          #sort="matSort"
+          class="mat-elevation-z8 fixed-table rounded-lg"
+        >
+        <!-- Datum Column -->
+        <ng-container matColumnDef="datum">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>DATUM</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.datum ? (element.datum.toDate() | date:'EEEE, d MMMM y') : null}}
+          </td>
+        </ng-container>
 
-      <!-- Locatie Column -->
-      <ng-container matColumnDef="locatie">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>LOCATIE</th>
-        <td mat-cell *matCellDef="let element">{{element.locatie}}</td>
-      </ng-container>
+        <!-- Bedrijf Column -->
+        <ng-container matColumnDef="bedrijf">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>BEDRIJF</th>
+          <td mat-cell *matCellDef="let element">{{element.bedrijf}}</td>
+        </ng-container>
 
-      <!-- status Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>STATUS</th>
-        <td mat-cell *matCellDef="let element">
-          <span
-            [class.accepted]="element.status === 'accepted'"
-            [class.pending]="element.status === 'pending'"
-            [class.rejected]="element.status === 'rejected'"
-            >{{element.status }}</span
-          >
-        </td>
-      </ng-container>
+        <!-- Locatie Column -->
+        <ng-container matColumnDef="locatie">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>LOCATIE</th>
+          <td mat-cell *matCellDef="let element">{{element.locatie}}</td>
+        </ng-container>
 
-      <tr
-        mat-header-row
-        *matHeaderRowDef="['datum', 'bedrijf', 'locatie', 'status']"
-      ></tr>
-      <tr
-        mat-row
-        *matRowDef="let row;columns: ['datum', 'bedrijf', 'locatie', 'status'];"
-        (click)="activateRoute('/add-job', row.id)"
-      ></tr>
-    </table>
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>STATUS</th>
+          <td mat-cell *matCellDef="let element">
+            <span
+              [class.accepted]="element.status === 'accepted'"
+              [class.pending]="element.status === 'pending'"
+              [class.rejected]="element.status === 'rejected'"
+              >{{element.status }}</span
+            >
+          </td>
+        </ng-container>
 
-    @if(dataSource.data.length === 0){
+        <tr
+          mat-header-row
+          *matHeaderRowDef="['datum', 'bedrijf', 'locatie', 'status']"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row;columns: ['datum', 'bedrijf', 'locatie', 'status'];"
+          (click)="activateRoute('/add-job', row.id)"
+        ></tr>
+      </table>
+      
+    } @else {
       <div class="flex items-center gap-2 text-gray-500">
         <mat-icon>manage_search</mat-icon>
-        <p class="m-0">Niks gevonden voor deze zoekopdracht.</p>
+        <p class="m-0">Geen sollicitaties gevonden.</p>
       </div>
     }
 
+  <div class="flex w-full items-center justify-between gap-4">
+    <app-search class="w-3/6 shrink-0" (search)="onSearch($event)"></app-search>
+
     <mat-paginator
       #paginator
-      [length]="10"
+      [length]="dataSource.filteredData.length"
       [pageIndex]="0"
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 20]"
       aria-label="Select page"
     >
     </mat-paginator>
-  </div>
 
-  <div class="flex w-full items-center justify-between gap-4">
-    <app-search class="w-3/6 shrink-0" (search)="onSearch($event)"></app-search>
     <button
       matButton="elevated"
       class=" shrink-0 flex flex-col p-0 h-10 w-10 !bg-[var(--brand-color)] rounded-full !text-white items-center justify-center"

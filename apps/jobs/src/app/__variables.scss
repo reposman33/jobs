@@ -11,6 +11,7 @@ $cell-even-hover-bg-color: color.scale($brand-color, $lightness: 60%);
 $status-accepted-color: green;
 $status-pending-color: orange;
 $status-rejected-color: grey;
+$table-header-bg-color: #367cba;
 
 $table-x-padding: 2rem;
 $border-color: #d1d5db;
@@ -32,6 +33,7 @@ $icon-size-fab: 64px;
   --status-accepted-color: #{$status-accepted-color};
   --status-pending-color: #{$status-pending-color};
   --status-rejected-color: #{$status-rejected-color};
+  --table-header-bg-color: #{$table-header-bg-color};
 
   --table-x-padding: #{$table-x-padding};
   --border-color: #{$border-color};

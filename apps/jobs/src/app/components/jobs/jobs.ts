@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  signal,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -19,9 +20,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Sollicitatie } from '../../../../models/sollicitatie.interface';
 import { StorageService } from '../../services/StorageService';
-import { DatePipe } from '@angular/common';
 import { environment } from '../../../environments';
 import { Search } from '../search/search';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-jobs',
@@ -42,8 +43,22 @@ import { Search } from '../search/search';
   standalone: true,
 })
 export class jobs {
-  @ViewChild(MatPaginator) paginator?: MatPaginator;
-  @ViewChild(MatSort) sort?: MatSort;
+  @ViewChild(MatPaginator) set paginator(value: MatPaginator | undefined) {
+    if (!value) {
+      return;
+    }
+    value.pageIndex = this.storageService.currentPaginatorPage;
+    this.dataSource.paginator = value;
+
+    value.page.subscribe((event: PageEvent) => {
+      this.storageService.currentPaginatorPage = event.pageIndex;
+    });
+  }
+  @ViewChild(MatSort) set sort(value: MatSort) {
+  if(value) {
+    this.dataSource.sort = value
+    this.dataSource.sort.sort({ id: 'datum', start: 'desc', disableClear: true });
+  };}
   @ViewChild(MatTable) table?: MatTable<Sollicitatie>;
 
   protected dataSource = new MatTableDataSource<Sollicitatie>();
@@ -52,26 +67,16 @@ export class jobs {
   protected jobs$!: Promise<Sollicitatie[]>;
   protected BUILD_COMMIT = environment.BUILD_COMMIT.substring(0, 5);
   protected BUILD_DATE = environment.BUILD_DATE;
+  tableDataExists = signal<boolean>(true)
 
-  async ngAfterViewInit(): Promise<void> {
-
-    this.dataSource.data = await this.storageService.getAlljobs();
-    
-    if (this.paginator) {
-      this.paginator.pageIndex = this.storageService.currentPaginatorPage; // Herstel de pagina-index bij het initialiseren van de paginator
-      this.dataSource.paginator = this.paginator;
-
-      this.paginator.page.subscribe((event: PageEvent) => {
-        this.storageService.currentPaginatorPage = event.pageIndex; // Sla de huidige pagina-index op in de service
-      });
-      
-    }
-    if (this.sort) {
-      this.dataSource.sort = this.sort;
-      this.sort.sort({ id: 'datum', start: 'desc', disableClear: true });
-    }
-
+  ngOnInit(){
+    this.storageService.getAlljobs().then(data => {
+      this.tableDataExists.set(data.length > 0)
+      this.dataSource.data = data
+    });
   }
+
+  ngAfterViewInit(): void {}
 
   activateRoute(route: string, id: string | null = null): void {
     if (id) {
@@ -84,6 +89,10 @@ export class jobs {
   onSearch($event: string): void {
     this.storageService.searchSollicitaties($event).then((data) => {
       this.dataSource.data = data;
+      this.tableDataExists.set(data.length > 0)
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
       this.sort?.sort({ id: 'datum', start: 'desc', disableClear: true });
     });
   }
