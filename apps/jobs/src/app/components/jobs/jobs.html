@@ -1,5 +1,4 @@
-<div class="flex flex-col gap-8 h-6 p-8">
-  <div class="rowContainer">
+<div class="flex flex-col gap-8 h-6 px-8">
 
     @if(tableDataExists()) {
       <table
@@ -7,7 +6,7 @@
           [dataSource]="dataSource"
           matSort
           #sort="matSort"
-          class="mat-elevation-z8 fixed-table"
+          class="mat-elevation-z8 fixed-table rounded-lg"
         >
         <!-- Datum Column -->
         <ng-container matColumnDef="datum">
@@ -53,25 +52,26 @@
         ></tr>
       </table>
       
-      <mat-paginator
-        #paginator
-        [length]="dataSource.filteredData.length"
-        [pageIndex]="0"
-        [pageSize]="10"
-        [pageSizeOptions]="[5, 10, 20]"
-        aria-label="Select page"
-      >
-      </mat-paginator>
     } @else {
       <div class="flex items-center gap-2 text-gray-500">
         <mat-icon>manage_search</mat-icon>
         <p class="m-0">Geen sollicitaties gevonden.</p>
       </div>
     }
-  </div>
 
   <div class="flex w-full items-center justify-between gap-4">
     <app-search class="w-3/6 shrink-0" (search)="onSearch($event)"></app-search>
+
+    <mat-paginator
+      #paginator
+      [length]="dataSource.filteredData.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+
     <button
       matButton="elevated"
       class=" shrink-0 flex flex-col p-0 h-10 w-10 !bg-[var(--brand-color)] rounded-full !text-white items-center justify-center"
