@@ -15,15 +15,7 @@ import {
 } from '@angular/forms';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localeNl from '@angular/common/locales/nl';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatRadioModule } from '@angular/material/radio';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
 import { StorageService } from '../../services/StorageService';
 import { Sollicitatie } from '../../../../models/sollicitatie.interface';
 import { AuthService } from '../../services/auth-service';
@@ -35,15 +27,6 @@ registerLocaleData(localeNl);
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatButtonModule,
-    MatIconModule,
-    MatRadioModule,
-    MatFormFieldModule,
   ],
   templateUrl: './add-job.html',
   styleUrls: ['./add-job.scss'],
