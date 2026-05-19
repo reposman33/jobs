@@ -29,7 +29,6 @@
     "@angular/cli": "~20.3.0",
     "@angular/compiler-cli": "20.3.13",
     "@angular/language-service": "20.3.13",
-    "@angular/material": "20.2.0",
     "@eslint/js": "^9.8.0",
     "@nx/angular": "22.3.3",
     "@nx/devkit": "22.3.3",
