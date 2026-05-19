@@ -5,12 +5,11 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-header',
-  imports: [AsyncPipe, CommonModule, DatePipe, MatButtonModule],
+  imports: [AsyncPipe, CommonModule, DatePipe],
   templateUrl: './header.html',
   styleUrl: './header.scss',
   encapsulation: ViewEncapsulation.Emulated,
