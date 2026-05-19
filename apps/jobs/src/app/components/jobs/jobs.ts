@@ -6,18 +6,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  MatTableModule,
-  MatTable,
-  MatTableDataSource,
-} from '@angular/material/table';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { Sollicitatie } from '../../../../models/sollicitatie.interface';
 import { StorageService } from '../../services/StorageService';
 import { environment } from '../../../environments';
@@ -28,11 +17,6 @@ import { DatePipe } from '@angular/common';
   selector: 'app-jobs',
   imports: [
     DatePipe,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatButtonModule,
-    MatIconModule,
     Search
   ],
   providers: [],
@@ -43,25 +27,7 @@ import { DatePipe } from '@angular/common';
   standalone: true,
 })
 export class jobs {
-  @ViewChild(MatPaginator) set paginator(value: MatPaginator | undefined) {
-    if (!value) {
-      return;
-    }
-    value.pageIndex = this.storageService.currentPaginatorPage;
-    this.dataSource.paginator = value;
 
-    value.page.subscribe((event: PageEvent) => {
-      this.storageService.currentPaginatorPage = event.pageIndex;
-    });
-  }
-  @ViewChild(MatSort) set sort(value: MatSort) {
-  if(value) {
-    this.dataSource.sort = value
-    this.dataSource.sort.sort({ id: 'datum', start: 'desc', disableClear: true });
-  };}
-  @ViewChild(MatTable) table?: MatTable<Sollicitatie>;
-
-  protected dataSource = new MatTableDataSource<Sollicitatie>();
   private router = inject(Router);
   private storageService = inject(StorageService);
   protected jobs$!: Promise<Sollicitatie[]>;
@@ -72,7 +38,6 @@ export class jobs {
   ngOnInit(){
     this.storageService.getAlljobs().then(data => {
       this.tableDataExists.set(data.length > 0)
-      this.dataSource.data = data
     });
   }
 
@@ -88,12 +53,8 @@ export class jobs {
 
   onSearch($event: string): void {
     this.storageService.searchSollicitaties($event).then((data) => {
-      this.dataSource.data = data;
       this.tableDataExists.set(data.length > 0)
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
-      this.sort?.sort({ id: 'datum', start: 'desc', disableClear: true });
+      // doe iets met de data
     });
   }
 }
