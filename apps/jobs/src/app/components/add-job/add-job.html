@@ -1,9 +1,9 @@
-<div class="add-sollicitatie-container">
-  <h2>Add Sollicitatie</h2>
+<div class="p-8 max-w-[800px] mx-auto">
+  <h2 class="mb-8 text-gray-800">Add Sollicitatie</h2>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-      <mat-form-field class="form-field">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-6">
+    <div class="grid grid-cols-2 gap-4">
+      <mat-form-field class="w-full">
         <mat-label>Datum</mat-label>
         <input matInput [matDatepicker]="datumPicker" formControlName="datum" />
         <mat-datepicker-toggle
@@ -13,7 +13,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #datumPicker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field class="form-field">
+      <mat-form-field class="w-full">
         <mat-label>Sluitingsdatum</mat-label>
         <input
           matInput
@@ -29,12 +29,12 @@
       </mat-form-field>
     </div>
 
-    <div class="form-row">
-      <mat-form-field class="form-field">
+    <div class="grid grid-cols-2 gap-4">
+      <mat-form-field class="w-full">
         <mat-label>Bedrijf</mat-label>
         <input matInput formControlName="bedrijf" />
       </mat-form-field>
-      <mat-form-field class="form-field">
+      <mat-form-field class="w-full">
         <mat-label>Kies een locatie</mat-label>
         <input
           matInput
@@ -55,37 +55,37 @@
       </mat-form-field>
     </div>
 
-    <div class="form-row">
-      <mat-form-field class="form-field full-width">
+    <div class="grid grid-cols-1 gap-4">
+      <mat-form-field class="w-full">
         <mat-label>Aanvraag</mat-label>
         <textarea matInput formControlName="aanvraag" rows="5"></textarea>
       </mat-form-field>
     </div>
 
-    <div class="form-row">
-      <mat-form-field class="form-field full-width">
+    <div class="grid grid-cols-1 gap-4">
+      <mat-form-field class="w-full">
         <mat-label>Motivatie</mat-label>
         <textarea matInput formControlName="motivatie" rows="5"></textarea>
       </mat-form-field>
     </div>
 
-    <div class="form-row">
-      <mat-form-field class="form-field full-width">
+    <div class="grid grid-cols-1 gap-4">
+      <mat-form-field class="w-full">
         <mat-label>Updates:</mat-label>
         <textarea matInput formControlName="updates" rows="3"></textarea>
       </mat-form-field>
     </div>
 
-    <div class="form-row">
-      <label class="radio-label !flex !justify-end self-center">Status</label>
-      <mat-radio-group formControlName="status" class="radio-group">
+    <div class="grid grid-cols-2 gap-4">
+      <label class="flex justify-end self-center font-medium text-gray-500">Status</label>
+      <mat-radio-group formControlName="status" class="flex flex-row gap-8">
         <mat-radio-button value="pending">Pending</mat-radio-button>
         <mat-radio-button value="accepted">Accepted</mat-radio-button>
         <mat-radio-button value="rejected">Rejected</mat-radio-button>
       </mat-radio-group>
     </div>
 
-    <div class="form-actions">
+    <div class="flex gap-4 justify-between mt-4">
       <button
         mat-raised-button
         (click)="activateRoute('jobs')"
