@@ -6,36 +6,52 @@
           [dataSource]="dataSource"
           matSort
           #sort="matSort"
-          class="mat-elevation-z8 fixed-table rounded-lg"
+          class="mat-elevation-z8 w-full table-auto px-8 pb-4 rounded-lg"
         >
         <!-- Datum Column -->
         <ng-container matColumnDef="datum">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>DATUM</th>
-          <td mat-cell *matCellDef="let element">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="border-0 w-[275px]">DATUM</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="border-0 text-white px-4 w-[275px]"
+          >
             {{element.datum ? (element.datum.toDate() | date:'EEEE, d MMMM y') : null}}
           </td>
         </ng-container>
 
         <!-- Bedrijf Column -->
         <ng-container matColumnDef="bedrijf">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>BEDRIJF</th>
-          <td mat-cell *matCellDef="let element">{{element.bedrijf}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="border-0 w-[450px]">BEDRIJF</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="border-0 text-white px-4 w-[450px]"
+          >{{element.bedrijf}}</td>
         </ng-container>
 
         <!-- Locatie Column -->
         <ng-container matColumnDef="locatie">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>LOCATIE</th>
-          <td mat-cell *matCellDef="let element">{{element.locatie}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="border-0 w-[200px]">LOCATIE</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="border-0 text-white px-4 w-[200px]"
+          >{{element.locatie}}</td>
         </ng-container>
 
         <!-- status Column -->
         <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>STATUS</th>
-          <td mat-cell *matCellDef="let element">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="border-0 w-[200px] text-center">STATUS</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="border-0 text-white px-4 w-[200px] text-center"
+          >
             <span
-              [class.accepted]="element.status === 'accepted'"
-              [class.pending]="element.status === 'pending'"
-              [class.rejected]="element.status === 'rejected'"
+              [class.text-green-600]="element.status === 'accepted'"
+              [class.text-orange-500]="element.status === 'pending'"
+              [class.text-gray-500]="element.status === 'rejected'"
               >{{element.status }}</span
             >
           </td>
@@ -69,6 +85,7 @@
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 20]"
       aria-label="Select page"
+      class="!border-0 !bg-white rounded-[21px] font-bold text-sm"
     >
     </mat-paginator>
 

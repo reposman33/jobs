@@ -37,7 +37,6 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [],
   templateUrl: './jobs.html',
-  styleUrls: ['./jobs.scss'],
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
