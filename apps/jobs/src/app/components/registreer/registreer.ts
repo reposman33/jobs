@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   selector: 'app-register',
   imports: [MatButtonModule, ReactiveFormsModule],
   templateUrl: './registreer.html',
-  styleUrl: './registreer.scss',
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
