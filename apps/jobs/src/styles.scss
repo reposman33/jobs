@@ -19,6 +19,12 @@ body {
     @apply text-2xl font-bold text-gray-800 m-0 p-0;
   }
 
+  table[mat-table],
+  .mat-mdc-table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+  }
+
   .mat-mdc-table .mat-mdc-header-cell {
     @apply bg-[var(--table-header-bg-color)] text-white font-semibold;
 
@@ -33,5 +39,69 @@ body {
     &:last-of-type {
       @apply rounded-tr-lg rounded-br-lg;
     } 
+  }
+
+  .mat-mdc-table .mat-mdc-row {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-cell-row-end);
+    box-shadow: var(--box-shadow-default);
+    overflow: hidden;
+
+    .mat-mdc-cell {
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+
+      &:nth-child(odd) {
+        background-color: var(--cell-odd-bg-color);
+
+        &:hover {
+          background-color: var(--cell-odd-hover-bg-color);
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: var(--cell-even-bg-color);
+
+        &:hover {
+          background-color: var(--cell-even-hover-bg-color);
+          color: #1a2222;
+        }
+      }
+
+      &:first-of-type {
+        border-left: 1px solid var(--border-color);
+        border-top-left-radius: var(--border-radius-cell-row-end);
+        border-bottom-left-radius: var(--border-radius-cell-row-end);
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+
+        &:hover {
+          border-top-left-radius: var(--border-radius-cell-row-end);
+          border-bottom-left-radius: var(--border-radius-cell-row-end);
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &:last-of-type {
+        border-right: 1px solid var(--border-color);
+        border-top-right-radius: var(--border-radius-cell-row-end);
+        border-bottom-right-radius: var(--border-radius-cell-row-end);
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+
+        &:hover {
+          border-top-right-radius: var(--border-radius-cell-row-end);
+          border-bottom-right-radius: var(--border-radius-cell-row-end);
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      &:not(:first-of-type):not(:last-of-type):hover {
+        border-radius: 0;
+      }
+    }
   }
 }
