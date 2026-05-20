@@ -46,7 +46,6 @@ registerLocaleData(localeNl);
     MatFormFieldModule,
   ],
   templateUrl: './add-job.html',
-  styleUrls: ['./add-job.scss'],
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: LOCALE_ID, useValue: 'nl-NL' }],
