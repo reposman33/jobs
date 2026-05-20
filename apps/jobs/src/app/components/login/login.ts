@@ -13,7 +13,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   selector: 'app-login',
   imports: [MatButtonModule, ReactiveFormsModule],
   templateUrl: './login.html',
-  styleUrl: './login.scss',
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
