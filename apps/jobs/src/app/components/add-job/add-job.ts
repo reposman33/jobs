@@ -27,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { StorageService } from '../../services/StorageService';
 import { Sollicitatie } from '../../../../models/sollicitatie.interface';
 import { AuthService } from '../../services/auth-service';
+import { Timestamp } from '@angular/fire/firestore'; // of van 'firebase/firestore'
 
 registerLocaleData(localeNl);
 @Component({
@@ -71,7 +72,7 @@ export class AddSollicitatieComponent implements OnInit {
 
   initializeForm(sollicitatie: Sollicitatie | null = null, id = ''): void {
     this.form = this.fb.group({
-      datum: [ this.getDate(sollicitatie?.datum),
+      datum: [ this.getDate(sollicitatie?.datum as any as Timestamp),
         [Validators.required],
       ],
       aanvraag: [
@@ -91,7 +92,7 @@ export class AddSollicitatieComponent implements OnInit {
         [Validators.required],
       ],
       sluitingsdatum: [
-        this.getDate(sollicitatie?.sluitingsdatum),
+        this.getDate(sollicitatie?.sluitingsdatum as any as Timestamp),
         [],
       ],
       updates: [sollicitatie?.updates || ''],
@@ -134,11 +135,6 @@ export class AddSollicitatieComponent implements OnInit {
     this.router.navigate([route]);
   }
 
-  private getDate(value: any): Date | null {
-    if(value && typeof (value as any).toDate === 'function')
-      return value.toDate();
-    else {
-      return null;
-    }
-  }
+  private getDate = (value: Timestamp): Date | null =>  
+    value ? value.toDate() : null  
 }
