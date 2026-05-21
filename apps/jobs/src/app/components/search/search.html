@@ -1,6 +1,27 @@
 <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="flex flex-1">
-  <input matInput formControlName="search" placeholder="Zoek op bedrijf" class="w-full md:min-w-[200px] sm:max-w-[200px] border border-gray-200 p-3 text-sm text-gray-500 placeholder-gray-500 outline-none rounded-tl-3xl rounded-bl-3xl"/>
-  <button type="submit" class="px-4 md:px-9 py-3 text-white bg-[var(--brand-color)] rounded-tr-3xl rounded-br-3xl" (click)="onSearch()">
+  <div class="relative">
+    <input
+      matInput
+      formControlName="search"
+      placeholder="Zoek op bedrijf"
+      class="w-full md:min-w-[200px] sm:max-w-[200px] py-3 pl-3 pr-10 text-sm text-gray-500 placeholder-gray-500 outline-none rounded-tl-3xl rounded-bl-3xl h-full"
+    />
+    @if (hasSearchText()) {
+      <button
+        type="button"
+        class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 hover:text-gray-600"
+        (click)="clearSearch()"
+        aria-label="Zoekveld wissen"
+      >
+        <mat-icon class="!text-xl !w-5">clear</mat-icon>
+      </button>
+    }
+  </div>
+  <button
+    type="submit"
+    class="px-4 md:px-9 py-3 text-white bg-[var(--button-bg-color)] hover:bg-[var(--button-hover-bg-color)] rounded-tr-3xl rounded-br-3xl"
+    (click)="onSearch()"
+  >
     <mat-icon>search</mat-icon>
   </button>
 </form>

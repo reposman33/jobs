@@ -72,6 +72,7 @@ export class AddSollicitatieComponent implements OnInit {
 
   initializeForm(sollicitatie: Sollicitatie | null = null, id = ''): void {
     this.form = this.fb.group({
+      //eslint-disable-next-line @typescript-eslint/no-explicit-any
       datum: [ this.getDate(sollicitatie?.datum as any as Timestamp),
         [Validators.required],
       ],
@@ -92,6 +93,7 @@ export class AddSollicitatieComponent implements OnInit {
         [Validators.required],
       ],
       sluitingsdatum: [
+        //eslint-disable-next-line @typescript-eslint/no-explicit-any
         this.getDate(sollicitatie?.sluitingsdatum as any as Timestamp),
         [],
       ],
