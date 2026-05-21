@@ -1,5 +1,5 @@
-<div class="p-8 max-w-[800px] mx-auto">
-  <h2 class="mb-8 text-gray-800">Add Sollicitatie</h2>
+<div class="p-8 max-w-[1100px] mx-auto">
+  <h2 class="mb-8 text-gray-800">Sollicitatie toevoegen</h2>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="">
     <div class="grid grid-cols-2 gap-4">
@@ -79,9 +79,9 @@
     <div class="grid grid-cols-2 gap-4">
       <label class="flex justify-end self-center font-medium text-gray-500">Status</label>
       <mat-radio-group formControlName="status" class="flex flex-row gap-8">
-        <mat-radio-button value="pending">Pending</mat-radio-button>
-        <mat-radio-button value="accepted">Accepted</mat-radio-button>
-        <mat-radio-button value="rejected">Rejected</mat-radio-button>
+        <mat-radio-button value="pending">In afwachting</mat-radio-button>
+        <mat-radio-button value="accepted">Success</mat-radio-button>
+        <mat-radio-button value="rejected">Niks geworden</mat-radio-button>
       </mat-radio-group>
     </div>
 
