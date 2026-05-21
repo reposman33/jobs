@@ -75,8 +75,6 @@ export class jobs {
     });
   }
 
-  ngAfterViewInit(): void {}
-
   activateRoute(route: string, id: string | null = null): void {
     if (id) {
       this.router.navigate([route, id]);
