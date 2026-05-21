@@ -21,6 +21,9 @@ $box-shadow-default: 0 1px 3px rgba(0, 0, 0, 0.1);
 $box-shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.1);
 $icon-size-fab: 64px;
 
+$button-bg-color: #{$brand-color};
+$button-hover-bg-color: color.scale($brand-color, $lightness: 20%);
+
 :root {
   --bg-color: #{$bg-color};
   --container-bg-color: #{$container-bg-color};
@@ -41,5 +44,8 @@ $icon-size-fab: 64px;
   --border-radius-cell-row-end: #{$border-radius-cell-row-end};
   --box-shadow-default: #{$box-shadow-default};
   --box-shadow-hover: #{$box-shadow-hover};
+
+  --button-bg-color: #{$button-bg-color};
+  --button-hover-bg-color: #{$button-hover-bg-color};
 }
 
