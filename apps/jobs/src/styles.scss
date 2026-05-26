@@ -104,4 +104,10 @@ body {
       }
     }
   }
+
+  // maak de placeholder tekst lichtgrijs
+  .placeholder-gray-500::placeholder {
+    color: rgb(107 114 128 / 0.5);
+  }
+
 }
