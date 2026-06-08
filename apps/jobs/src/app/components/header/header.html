@@ -11,7 +11,7 @@
     <h1>jobs</h1>
   </div>
 
-  <div class="flex items-center w-[26vw]">
+  <div class="flex items-center justify-end mr-1">
     @if(authService.isAuthenticated$ | async) {
     <span class="ml-0 mr-3 text-xs text-gray-500">
       Laatste login: {{ (lastLogin$ | async) | date:'EEEE d MMMM y HH:MM:ss'}}
