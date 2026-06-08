@@ -5,18 +5,20 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@angular-devkit/build-angular": "20.3.17",
+    "@angular-devkit/build-angular": "20.3.27",
     "@angular/cdk": "20.2.0",
     "@angular/common": "20.3.14",
-    "@angular/compiler": "20.3.15",
-    "@angular/core": "20.3.16",
+    "@angular/compiler": "20.3.16",
+    "@angular/core": "20.3.18",
     "@angular/fire": "20.0.1",
     "@angular/forms": "20.3.13",
     "@angular/platform-browser": "20.3.13",
-    "@angular/platform-server": "20.3.19",
+    "@angular/platform-server": "20.3.24",
     "@angular/router": "20.3.13",
+    "@faker-js/faker": "^10.4.0",
     "@nx-extend/firebase-hosting": "^10.0.0",
     "express": "^4.22.2",
+    "firebase-admin": "^13.10.0",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },
@@ -80,5 +82,13 @@
     "typescript-eslint": "^8.40.0",
     "vite": "^7.0.0",
     "vitest": "4.0.9"
+  },
+  "overrides": {
+    "glob": "latest",
+    "uuid": "latest",
+    "**": {
+      "glob": "latest",
+      "uuid": "latest"
+    }
   }
 }
