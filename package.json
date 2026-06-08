@@ -15,8 +15,10 @@
     "@angular/platform-browser": "20.3.13",
     "@angular/platform-server": "20.3.19",
     "@angular/router": "20.3.13",
+    "@faker-js/faker": "^10.4.0",
     "@nx-extend/firebase-hosting": "^10.0.0",
     "express": "^4.22.2",
+    "firebase-admin": "^13.10.0",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },
