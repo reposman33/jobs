@@ -31,7 +31,9 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: npm ci
+      - - run: npm ci --legacy-peer-deps # Use --legacy-peer-deps to avoid peer dependency conflicts in CI. Your package.json specifies vitest@4.0.9 (dev dependency)
+                                        # @angular/build@20.3.27 expects vitest@^3.1.1, which causes npm ci to fail. Using --legacy-peer-deps allows npm to ignore peer dependency conflicts and install the dependencies successfully.
+    # - run: npm ci # Use this line instead if you want npm ci to fail on peer dependency conflicts
       - run: npx playwright install --only-shell
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
