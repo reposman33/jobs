@@ -76,7 +76,7 @@
     }
 
   <div class="flex w-full items-center justify-between gap-4">
-    <app-search class="w-3/6 shrink-0" (search)="onSearch($event)"></app-search>
+    <app-search class="w-2/6 shrink-0" (search)="onSearch($event)"></app-search>
 
 
 @if(tableDataExists()) {
@@ -87,7 +87,7 @@
     [pageSize]="10"
     [pageSizeOptions]="[5, 10, 20]"
       aria-label="Select page"
-      class="!border-0 !bg-white rounded-[21px] font-bold text-sm"
+      class="!border-0 !bg-white rounded-[21px] !text-base"
     >
     </mat-paginator>
 
