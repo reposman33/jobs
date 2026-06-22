@@ -9,13 +9,14 @@ admin.initializeApp({
 
 const db = admin.firestore();
 const COLLECTION_NAME = 'jobs'; // Pas dit aan naar jouw collectienaam
+const jobCount = 15; // Aantal dummy documenten dat je wilt genereren
 
 async function seedDatabase() {
   const batch = db.batch();
 
   console.log('Dummy data genereren...');
 
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < jobCount; i++) {
     // Definieer de mogelijke statussen
     const statuses = ['accepted', 'rejected', 'pending'];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
