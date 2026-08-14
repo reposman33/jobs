@@ -3,7 +3,7 @@
 Handig om bij te houden waar je op gereageerd hebt en wat de status van een aanvraag is.
 
 Je moet eerst inloggen zodat je je eigen gegevens kunt beheren:
-- op een test account met test data: test@test.com / &8uBv58pSc
+- op een **test account** met test data: test@test.com / &8uBv58pSc
 - met Github
 - met Google
 
