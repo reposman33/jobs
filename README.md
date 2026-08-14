@@ -14,11 +14,8 @@ Functionaliteit:
 
 Gebruikte techniek: Angular 20+ Signals, Angular Material, TailwindCSS, Angular Router en RxJs
 
-## Demo modus
-Om de webapp te kunnen tonen zonder je eigen data te moeten prijsgeven is er een dummy account met dummy data. Log daarvoor in met het `test@test.com` e-mailadres
-
 ## Genereren van dummy data met faker-js
-Om de dummy data te genereren voor het test account is gebruik gemaakt van [faker-js](https://fakerjs.dev/guide/). Het werkt heel simpel: om testdata te genereren in de database voer je het script uit in `/Users/marcbakker/Projecten/www/jobs/generateData.js`. Configuratie (zoals dummy tekst en aantal jobs) vind je in de code.
+Om de dummy data te genereren voor het test account is gebruik gemaakt van [faker-js](https://fakerjs.dev/guide/). Het werkt heel simpel: om testdata te genereren in de database voer je het script uit in `/jobs/generateData.js`. Configuratie (zoals dummy tekst en aantal jobs) vind je in de code.
 
 ## Gebruik content-security-policy
 In develop is het mogelijk om CSP headers toe te voegen aan een HTTP respons. Daarvoor moet je een Express server starten. Deze dient als proxy en voegt de CSP header met directives toe. Met de node server (`ng serve`) kan dat namelijk niet (met `/proxy-conf.js` ook niet).

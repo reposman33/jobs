@@ -138,5 +138,5 @@ export class AddSollicitatieComponent implements OnInit {
   }
 
   private getDate = (value: Timestamp): Date | null =>  
-    value ? value.toDate() : null  
+    value?.toDate?.() ?? null;
 }
