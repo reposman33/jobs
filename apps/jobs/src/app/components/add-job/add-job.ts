@@ -31,7 +31,7 @@ import { Timestamp } from '@angular/fire/firestore'; // of van 'firebase/firesto
 
 registerLocaleData(localeNl);
 @Component({
-  selector: 'app-add-sollicitatie',
+  selector: 'app-add-job',
   standalone: true,
   imports: [
     CommonModule,
