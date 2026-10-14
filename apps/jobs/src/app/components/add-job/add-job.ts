@@ -61,6 +61,7 @@ export class AddSollicitatieComponent implements OnInit {
   protected form!: FormGroup;
   protected locatie$: Promise<Pick<Sollicitatie, 'locatie'>[]> =
     this.storageService.getLocaties();
+  protected title = 'Nieuwe sollicitatie toevoegen';
 
   ngOnInit(): void {
     this.initializeForm();
@@ -106,6 +107,7 @@ export class AddSollicitatieComponent implements OnInit {
   }
 
   async updateForm(id: string) {
+    this.title = 'Bestaande sollicitatie aanpassen';
     this.storageService
       .getSollicitatieById(id)
       .subscribe((jobs) => this.initializeForm(jobs, id));
